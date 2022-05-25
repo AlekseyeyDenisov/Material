@@ -38,6 +38,14 @@ class PictureOfTheDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
         chipGroup()
+        bottomSheet()
+
+
+
+    }
+
+    private fun bottomSheet() {
+
 
     }
 
@@ -73,6 +81,8 @@ class PictureOfTheDayFragment : Fragment() {
             is PictureOfTheDayAppState.Success -> {
                 visibilityLoading(false)
                 binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
+               binding.bottomSheetLayout.title.text = pictureOfTheDayAppState.responseDataItemDay.title
+               binding.bottomSheetLayout.explanation.text = pictureOfTheDayAppState.responseDataItemDay.explanation
             }
         }
     }
