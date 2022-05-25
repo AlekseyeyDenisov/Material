@@ -2,17 +2,14 @@ package ru.dw.material.view.picture
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
+import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
+import ru.dw.material.view.MainActivity
 import ru.dw.material.view.PictureOfTheDayAppState
 
 
@@ -36,18 +33,17 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        menuActionBar()
         initViewModel()
         chipGroup()
-        bottomSheet()
-
-
 
     }
 
-    private fun bottomSheet() {
-
-
+    private fun menuActionBar() {
+        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
+        setHasOptionsMenu(true)
     }
+
 
     private fun chipGroup() {
         binding.today.setOnClickListener {
@@ -75,21 +71,45 @@ class PictureOfTheDayFragment : Fragment() {
             is PictureOfTheDayAppState.Error -> {
                 visibilityLoading(false)
                 Log.d("@@@", "renderData Error: ${pictureOfTheDayAppState.error}")
-                Toast.makeText(requireContext(), pictureOfTheDayAppState.error, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), pictureOfTheDayAppState.error, Toast.LENGTH_SHORT)
+                    .show()
 
             }
             is PictureOfTheDayAppState.Success -> {
                 visibilityLoading(false)
                 binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
-               binding.bottomSheetLayout.title.text = pictureOfTheDayAppState.responseDataItemDay.title
-               binding.bottomSheetLayout.explanation.text = pictureOfTheDayAppState.responseDataItemDay.explanation
+                binding.bottomSheetLayout.title.text =
+                    pictureOfTheDayAppState.responseDataItemDay.title
+                binding.bottomSheetLayout.explanation.text =
+                    pictureOfTheDayAppState.responseDataItemDay.explanation
             }
         }
     }
 
-    private fun visibilityLoading(visibility:Boolean){
+    private fun visibilityLoading(visibility: Boolean) {
         if (visibility) binding.loadingPicture.visibility = View.VISIBLE
         else binding.loadingPicture.visibility = View.GONE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_bar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.app_bar_fav -> {
+                Log.d("@@@", "onOptionsItemSelected app_bar_fav: ")
+            }
+            R.id.app_bar_settings -> {
+                Log.d("@@@", "onOptionsItemSelected app_bar_settings: ")
+            }
+            android.R.id.home -> {
+                BottomNavigationDrawerFragment.newInstance()
+                    .show(requireActivity().supportFragmentManager, "")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
