@@ -11,8 +11,6 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLayout"
             android:layout_width="0dp"
@@ -34,6 +32,8 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -43,10 +43,35 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputLayout"
+            app:layout_constraintTop_toBottomOf="@id/chip_group"
             app:srcCompat="@drawable/ic_no_photo_vector" />
 
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.MaterialComponents.Chip.Entry">
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today"
+               />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/yesterday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yesterday"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tdby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tdby"/>
+        </com.google.android.material.chip.ChipGroup>
 
 
         <com.google.android.material.bottomappbar.BottomAppBar

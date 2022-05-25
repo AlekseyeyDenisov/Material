@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.view.PictureOfTheDayAppState
 
@@ -36,7 +37,20 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
+        chipGroup()
 
+    }
+
+    private fun chipGroup() {
+        binding.today.setOnClickListener {
+            viewModel.sendRequest(0)
+        }
+        binding.yesterday.setOnClickListener {
+            viewModel.sendRequest(1)
+        }
+        binding.tdby.setOnClickListener {
+            viewModel.sendRequest(2)
+        }
     }
 
     private fun initViewModel() {
