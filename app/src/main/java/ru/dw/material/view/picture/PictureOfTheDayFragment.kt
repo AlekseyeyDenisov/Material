@@ -1,5 +1,7 @@
 package ru.dw.material.view.picture
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -42,7 +44,17 @@ class PictureOfTheDayFragment : Fragment() {
         initViewModel()
         chipGroup()
         fabListener()
+        searchWikipedia()
 
+    }
+
+    private fun searchWikipedia() {
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data =
+                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+            })
+        }
     }
 
     private fun fabListener() {
@@ -84,7 +96,6 @@ class PictureOfTheDayFragment : Fragment() {
         (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
         setHasOptionsMenu(true)
     }
-
 
     private fun chipGroup() {
         binding.chipGroup.setOnCheckedChangeListener { group, position ->
@@ -158,7 +169,6 @@ class PictureOfTheDayFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 
     companion object {
         @JvmStatic
