@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.chip.Chip
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.view.MainActivity
@@ -14,6 +18,7 @@ import ru.dw.material.view.PictureOfTheDayAppState
 
 
 class PictureOfTheDayFragment : Fragment() {
+    var isMain = true
 
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
@@ -36,6 +41,42 @@ class PictureOfTheDayFragment : Fragment() {
         menuActionBar()
         initViewModel()
         chipGroup()
+        fabListener()
+
+    }
+
+    private fun fabListener() {
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
+        binding.fab.setOnClickListener {
+            if (isMain) {
+                binding.bottomAppBar.navigationIcon = null
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_back_fab
+                    )
+                )
+                binding.bottomAppBar.replaceMenu(R.menu.menu_null)
+
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            } else {
+                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_hamburger_menu_bottom_bar
+                ))
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_plus_fab
+                    )
+                )
+                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            }
+            isMain = !isMain
+        }
 
     }
 
@@ -46,6 +87,12 @@ class PictureOfTheDayFragment : Fragment() {
 
 
     private fun chipGroup() {
+        binding.chipGroup.setOnCheckedChangeListener { group, position ->
+            group.findViewById<Chip>(position)?.let {
+                Log.d("@@@", "chipGroup: ${it.text} $position")//Выводит страную позицию "2131231225"
+            }
+        }
+
         binding.today.setOnClickListener {
             viewModel.sendRequest(0)
         }
