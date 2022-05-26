@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.chip.Chip
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.view.MainActivity
@@ -20,14 +19,17 @@ import ru.dw.material.view.PictureOfTheDayAppState
 
 
 class PictureOfTheDayFragment : Fragment() {
-    var isMain = true
-
+    private var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
     private val viewModel: PictureOfTheDayFragmentViewModel by lazy {
         ViewModelProvider(this)[PictureOfTheDayFragmentViewModel::class.java]
     }
+    private val TODAY_PICTURE = 0
+    private val YESTERDAY_PICTURE = 1
+    private val DAY_BEFOR_YESTERDAY_PICTURE = 2
+    private val URL_WIKIPEDIA = "https://en.wikipedia.org/wiki/"
 
 
     override fun onCreateView(
@@ -52,13 +54,14 @@ class PictureOfTheDayFragment : Fragment() {
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data =
-                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                    Uri.parse("$URL_WIKIPEDIA${binding.inputEditText.text.toString()}")
             })
         }
     }
 
     private fun fabListener() {
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
+        val bottomSheetBehavior =
+            BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
         binding.fab.setOnClickListener {
             if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
@@ -98,20 +101,14 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun chipGroup() {
-        binding.chipGroup.setOnCheckedChangeListener { group, position ->
-            group.findViewById<Chip>(position)?.let {
-                Log.d("@@@", "chipGroup: ${it.text} $position")//Выводит страную позицию "2131231225"
-            }
-        }
-
         binding.today.setOnClickListener {
-            viewModel.sendRequest(0)
+            viewModel.sendRequest(TODAY_PICTURE)
         }
         binding.yesterday.setOnClickListener {
-            viewModel.sendRequest(1)
+            viewModel.sendRequest(YESTERDAY_PICTURE)
         }
         binding.tdby.setOnClickListener {
-            viewModel.sendRequest(2)
+            viewModel.sendRequest(DAY_BEFOR_YESTERDAY_PICTURE)
         }
     }
 

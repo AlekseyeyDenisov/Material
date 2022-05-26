@@ -13,5 +13,6 @@
     <string name="tdby">Позовчера</string>
     <string name="screen_1">На экран 1</string>
     <string name="screen_2">На экран 2</string>
+    <string name="button">Кнопка</string>
 
 </resources>

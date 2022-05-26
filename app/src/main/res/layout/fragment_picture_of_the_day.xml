@@ -94,7 +94,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottom_app_bar"
-            app:srcCompat="@drawable/ic_plus_fab"/>
+            app:srcCompat="@drawable/ic_plus_fab"
+            android:contentDescription="@string/button" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -102,7 +103,6 @@
         android:id="@+id/loadingPicture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:visibility="gone"
         tools:visibility="gone">
 
