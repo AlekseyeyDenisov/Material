@@ -19,4 +19,11 @@
     <color name="red_800">#C82424</color>
     <color name="red_900">#AE0B0B</color>
 
+
+    <color name="red">#EF0606</color>
+    <color name="green">#6EBD1E</color>
+    <color name="blue">#3A43F4</color>
+
+
+
 </resources>

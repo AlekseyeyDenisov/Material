@@ -1,21 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Material" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="BaseThemeMaterial" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:navigationBarColor">@color/red_500</item>
-        <item name="colorPrimary">@color/red_600</item>
+        <item name="android:navigationBarColor">?baseThemeColor</item>
+        <item name="colorPrimary">?baseThemeColor</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorPrimaryContainer">@color/red_100</item>
-        <item name="colorOnPrimaryContainer">@color/red_900</item>
-        <item name="colorPrimaryInverse">@color/red_200</item>
-        <item name="colorSecondary">@color/red_600</item>
+        <item name="colorPrimaryContainer">?baseThemeColor</item>
+        <item name="colorOnPrimaryContainer">?baseThemeColor</item>
+        <item name="colorPrimaryInverse">?baseThemeColor</item>
+        <item name="colorSecondary">?baseThemeColor</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="colorSecondaryContainer">@color/red_100</item>
-        <item name="colorOnSecondaryContainer">@color/red_900</item>
-        <item name="colorTertiary">@color/red_600</item>
+        <item name="colorSecondaryContainer">?baseThemeColor</item>
+        <item name="colorOnSecondaryContainer">?baseThemeColor</item>
+        <item name="colorTertiary">?baseThemeColor</item>
         <item name="colorOnTertiary">@color/white</item>
-        <item name="colorTertiaryContainer">@color/red_100</item>
-        <item name="colorOnTertiaryContainer">@color/red_900</item>
+        <item name="colorTertiaryContainer">?baseThemeColor</item>
+        <item name="colorOnTertiaryContainer">?baseThemeColor</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
@@ -26,33 +26,16 @@
         <item name="android:textViewStyle">@style/MyTextView</item>
 
     </style>
-    <style name="MyTextView" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
-        <item name="android:fontFamily">@font/aladin</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:textColor">#1F36A8</item>
-        <item name="android:paddingStart">@dimen/padding_start_base</item>
-        <item name="android:paddingEnd">@dimen/padding_end_base</item>
+
+    <style name="RedThemeMaterial" parent="BaseThemeMaterial">
+        <item name="baseThemeColor">@color/red</item>
+    </style>
+    <style name="BlueThemeMaterial" parent="BaseThemeMaterial">
+        <item name="baseThemeColor">@color/blue</item>
     </style>
 
-    <style name="TextViewTitle" parent="Base.Widget.AppCompat.TextView">
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:fontFamily">@font/andada</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
+    <style name="GreenThemeMaterial" parent="BaseThemeMaterial">
+        <item name="baseThemeColor">@color/green</item>
     </style>
 
-    <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-
-    </style>
-    <style name="MyStyleFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="tint">@color/red_600</item>
-        <item name="backgroundTint">@color/white</item>
-    </style>
-
-    <style name="MyStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">#034AFF</item>
-        <item name="helperTextEnabled">false</item>
-        <item name="counterEnabled">false</item>
-        <item name="errorTextColor">#034AFF</item>
-    </style>
 </resources>

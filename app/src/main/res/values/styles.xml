@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyTextView" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+        <item name="android:fontFamily">@font/aladin</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">#1F36A8</item>
+        <item name="android:paddingStart">@dimen/padding_start_base</item>
+        <item name="android:paddingEnd">@dimen/padding_end_base</item>
+    </style>
+
+    <style name="TextViewTitle" parent="Base.Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:fontFamily">@font/andada</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+
+    </style>
+    <style name="MyStyleFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="tint">?baseThemeColor</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
+    <style name="MyStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#034AFF</item>
+        <item name="helperTextEnabled">false</item>
+        <item name="counterEnabled">false</item>
+        <item name="errorTextColor">#034AFF</item>
+    </style>
+</resources>
