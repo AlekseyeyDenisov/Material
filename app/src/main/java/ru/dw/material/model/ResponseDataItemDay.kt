@@ -14,7 +14,7 @@ data class ResponseDataItemDay(
 	val mediaType: String,
 
 	@field:SerializedName("hdurl")
-	val hdurl: String,
+	val hdUrl: String,
 
 	@field:SerializedName("service_version")
 	val serviceVersion: String,

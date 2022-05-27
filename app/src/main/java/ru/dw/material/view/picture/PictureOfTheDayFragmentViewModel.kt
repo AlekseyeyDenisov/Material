@@ -1,6 +1,7 @@
 package ru.dw.material.view.picture
 
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.dw.material.model.ResponseDataItemDay
@@ -33,11 +34,11 @@ class PictureOfTheDayFragmentViewModel(
         })
     }
 
+    @SuppressLint("SimpleDateFormat", "WeekBasedYear")
     private fun getDaysAgo(daysAgo: Int): String {
         val sdf = SimpleDateFormat("YYYY-MM-dd")
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
-
         return sdf.format(calendar.time)
     }
 
