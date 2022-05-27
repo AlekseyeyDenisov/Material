@@ -34,7 +34,7 @@
         <item name="android:paddingEnd">@dimen/padding_end_base</item>
     </style>
 
-    <style name="TextViewTitle" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+    <style name="TextViewTitle" parent="Base.Widget.AppCompat.TextView">
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:fontFamily">@font/andada</item>
         <item name="android:textColor">@color/black</item>
