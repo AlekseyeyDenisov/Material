@@ -1,4 +1,4 @@
-package ru.dw.material.view.picture
+package ru.dw.material.view.picture.bottonnonigation
 
 import android.os.Bundle
 import android.util.Log
@@ -7,20 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.dw.material.R
-import ru.dw.material.databinding.BottomNavigationLayoutBinding
+import ru.dw.material.databinding.BottomBurgerNavigationLayoutBinding
 
 
-class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
+class BurgerBottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
-    private var _binding: BottomNavigationLayoutBinding? = null
-    val binding: BottomNavigationLayoutBinding
+    private var _binding: BottomBurgerNavigationLayoutBinding? = null
+    val binding: BottomBurgerNavigationLayoutBinding
         get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = BottomNavigationLayoutBinding.inflate(inflater, container, false)
+        _binding = BottomBurgerNavigationLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,7 +45,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = BottomNavigationDrawerFragment()
+        fun newInstance() = BurgerBottomNavigationDrawerFragment()
     }
 
     override fun onDestroy() {

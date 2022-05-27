@@ -12,5 +12,12 @@
     <string name="screen_1">To Screen 1</string>
     <string name="screen_2">To Screen 1</string>
     <string name="button">Button</string>
+    <string name="themes_red">Themes red</string>
+    <string name="themes_blue">Themes blue</string>
+    <string name="themes_green">Themes green</string>
+    <string name="theme_change">Сменить тему</string>
+    <string name="ok">Yes</string>
+    <string name="no">No</string>
+    <string name="theme_change_warning">Attention the application will be restarted or the theme will change after the next launch of the application</string>
 
 </resources>

@@ -12,5 +12,11 @@
     <string name="screen_1">На экран 1</string>
     <string name="screen_2">На экран 2</string>
     <string name="button">Кнопка</string>
-
+    <string name="themes_red">Красная тема</string>
+    <string name="themes_blue">Синия тема</string>
+    <string name="themes_green">Зеленая тема</string>
+    <string name="theme_change_warning">Внимание приложение будет перезагружено или тема поменяется после следующего запуска приложения</string>
+    <string name="theme_change">Сменить тему</string>
+    <string name="ok">Да</string>
+    <string name="no">Нет</string>
 </resources>

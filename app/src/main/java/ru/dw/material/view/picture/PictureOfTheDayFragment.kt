@@ -15,7 +15,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.view.MainActivity
-import ru.dw.material.view.PictureOfTheDayAppState
+import ru.dw.material.view.picture.bottonnonigation.BurgerBottomNavigationDrawerFragment
+import ru.dw.material.view.picture.bottonnonigation.SettingsBottomNavigationDrawerFragment
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -157,10 +158,11 @@ class PictureOfTheDayFragment : Fragment() {
                 Log.d("@@@", "onOptionsItemSelected app_bar_fav: ")
             }
             R.id.app_bar_settings -> {
-                Log.d("@@@", "onOptionsItemSelected app_bar_settings: ")
+                SettingsBottomNavigationDrawerFragment.newInstance()
+                    .show(requireActivity().supportFragmentManager, "")
             }
             android.R.id.home -> {
-                BottomNavigationDrawerFragment.newInstance()
+                BurgerBottomNavigationDrawerFragment.newInstance()
                     .show(requireActivity().supportFragmentManager, "")
             }
         }
