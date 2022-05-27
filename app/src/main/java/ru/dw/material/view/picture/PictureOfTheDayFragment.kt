@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.tabs.TabLayout
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.view.MainActivity
@@ -102,15 +103,26 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun chipGroup() {
-        binding.today.setOnClickListener {
-            viewModel.sendRequest(TODAY_PICTURE)
-        }
-        binding.yesterday.setOnClickListener {
-            viewModel.sendRequest(YESTERDAY_PICTURE)
-        }
-        binding.tdby.setOnClickListener {
-            viewModel.sendRequest(DAY_BEFOR_YESTERDAY_PICTURE)
-        }
+        binding.tableLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.d("@@@", "onTabSelected: ${tab?.position}")
+                when(tab?.position){
+                    0->{viewModel.sendRequest(TODAY_PICTURE)}
+                    1->{viewModel.sendRequest(YESTERDAY_PICTURE)}
+                    2->{viewModel.sendRequest(DAY_BEFOR_YESTERDAY_PICTURE)}
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
+
     }
 
     private fun initViewModel() {
