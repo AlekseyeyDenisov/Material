@@ -2,20 +2,20 @@
     <!-- Base application theme. -->
     <style name="BaseThemeMaterial" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:navigationBarColor">?baseThemeColor</item>
-        <item name="colorPrimary">?baseThemeColor</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="colorPrimary">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorPrimaryContainer">?baseThemeColor</item>
-        <item name="colorOnPrimaryContainer">?baseThemeColor</item>
-        <item name="colorPrimaryInverse">?baseThemeColor</item>
-        <item name="colorSecondary">?baseThemeColor</item>
+        <item name="colorPrimaryContainer">@color/black</item>
+        <item name="colorOnPrimaryContainer">@color/black</item>
+        <item name="colorPrimaryInverse">@color/black</item>
+        <item name="colorSecondary">@color/black</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="colorSecondaryContainer">?baseThemeColor</item>
-        <item name="colorOnSecondaryContainer">?baseThemeColor</item>
-        <item name="colorTertiary">?baseThemeColor</item>
+        <item name="colorSecondaryContainer">@color/black</item>
+        <item name="colorOnSecondaryContainer">@color/black</item>
+        <item name="colorTertiary">@color/black</item>
         <item name="colorOnTertiary">@color/white</item>
-        <item name="colorTertiaryContainer">?baseThemeColor</item>
-        <item name="colorOnTertiaryContainer">?baseThemeColor</item>
+        <item name="colorTertiaryContainer">@color/black</item>
+        <item name="colorOnTertiaryContainer">@color/black</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
