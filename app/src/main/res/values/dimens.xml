@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="primary_margin">8dp</dimen>
+    <dimen name="margin_start_base">8dp</dimen>
+    <dimen name="margin_top_base">8dp</dimen>
+    <dimen name="margin_end_base">8dp</dimen>
+    <dimen name="padding_start_base">10dp</dimen>
+    <dimen name="padding_end_base">10dp</dimen>
+    <dimen name="text_input_layout_margin_top">60dp</dimen>
 </resources>

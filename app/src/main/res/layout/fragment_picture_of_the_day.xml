@@ -47,7 +47,7 @@
             app:endIconContentDescription="content_description_end_icon"
             app:endIconDrawable="@drawable/ic_wikipedia"
             app:endIconMode="custom"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="@dimen/text_input_layout_margin_top"
             android:layout_gravity="center_horizontal"
             app:helperText="@string/wiki_helper_text">
 
