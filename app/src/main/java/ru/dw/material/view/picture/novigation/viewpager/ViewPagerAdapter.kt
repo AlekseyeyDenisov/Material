@@ -38,4 +38,11 @@ class ViewPagerAdapter(fm: FragmentManager, val responseDataItemDay: ResponseDat
         return fragment[position]
     }
 
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when(position){
+            0-> "HIGH"
+            else-> "LOW"
+        }
+    }
+
 }

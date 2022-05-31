@@ -160,6 +160,7 @@ class PictureOfTheDayFragment : Fragment() {
                 visibilityLoading(false)
                 if (pictureOfTheDayAppState.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
                     binding.imageView.visibility = View.VISIBLE
+                    binding.tabLayoutViewPager.visibility = View.GONE
                     binding.vewPage.visibility = View.GONE
                     binding.imageView.apply {
                         load(R.drawable.video)
@@ -171,19 +172,20 @@ class PictureOfTheDayFragment : Fragment() {
                     }
 
                 } else {
-//                    binding.imageView.setOnClickListener(null)
-//                    binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
-//                    binding.bottomSheetLayout.title.text =
-//                        pictureOfTheDayAppState.responseDataItemDay.title
-//                    binding.bottomSheetLayout.explanation.text =
-//                        pictureOfTheDayAppState.responseDataItemDay.explanation
+
                     binding.imageView.visibility = View.GONE
                     binding.vewPage.visibility = View.VISIBLE
+                    binding.tabLayoutViewPager.visibility = View.VISIBLE
                     binding.vewPage.adapter =
                         ViewPagerAdapter(
                             requireActivity().supportFragmentManager,
                             pictureOfTheDayAppState.responseDataItemDay
                         )
+                    binding.bottomSheetLayout.title.text =
+                        pictureOfTheDayAppState.responseDataItemDay.title
+                    binding.bottomSheetLayout.explanation.text =
+                        pictureOfTheDayAppState.responseDataItemDay.explanation
+                    binding.tabLayoutViewPager.setupWithViewPager(binding.vewPage)
                 }
 
             }

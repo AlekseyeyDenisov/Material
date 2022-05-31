@@ -67,14 +67,6 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/vew_page"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputLayout" />
             <ru.dw.material.utils.EquilateralImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
@@ -84,8 +76,25 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/inputLayout"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
+                tools:srcCompat="@drawable/video"/>
 
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vew_page"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintBottom_toTopOf="@+id/tab_layout_view_pager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputLayout" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vew_page" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
