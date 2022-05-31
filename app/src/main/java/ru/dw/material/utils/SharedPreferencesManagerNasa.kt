@@ -10,7 +10,7 @@ const val CONSTANT_THEMES_BLU = 1
 const val CONSTANT_THEMES_GREEN = 2
 
 
-class SharedPreferencesManager(context: Context) {
+class SharedPreferencesManagerNasa(context: Context) {
     private var pref: SharedPreferences =
         context.getSharedPreferences(CONSTANT_SHARED_PREFERENCES, Context.MODE_PRIVATE)
 

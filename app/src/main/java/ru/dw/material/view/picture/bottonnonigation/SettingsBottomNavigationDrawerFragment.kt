@@ -12,7 +12,7 @@ import ru.dw.material.databinding.BottomSettingsNavigationLayoutBinding
 import ru.dw.material.utils.CONSTANT_THEMES_BLU
 import ru.dw.material.utils.CONSTANT_THEMES_GREEN
 import ru.dw.material.utils.CONSTANT_THEMES_RED
-import ru.dw.material.utils.SharedPreferencesManager
+import ru.dw.material.utils.SharedPreferencesManagerNasa
 import ru.dw.material.view.picture.dialog.DialogChangeThemes
 
 
@@ -34,7 +34,7 @@ class SettingsBottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.navigationView.setNavigationItemSelectedListener {
-            val pref = SharedPreferencesManager(requireContext())
+            val pref = SharedPreferencesManagerNasa(requireContext())
             val dialog = DialogChangeThemes()
 
             val transaction: FragmentTransaction =

@@ -15,6 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
+import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
 import ru.dw.material.view.MainActivity
 import ru.dw.material.view.picture.bottonnonigation.BurgerBottomNavigationDrawerFragment
 import ru.dw.material.view.picture.bottonnonigation.SettingsBottomNavigationDrawerFragment
@@ -46,7 +47,7 @@ class PictureOfTheDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         menuActionBar()
         initViewModel()
-        chipGroup()
+        tabSelected()
         fabListener()
         searchWikipedia()
 
@@ -102,7 +103,7 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private fun chipGroup() {
+    private fun tabSelected() {
         binding.tableLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 Log.d("@@@", "onTabSelected: ${tab?.position}")
@@ -145,11 +146,23 @@ class PictureOfTheDayFragment : Fragment() {
             }
             is PictureOfTheDayAppState.Success -> {
                 visibilityLoading(false)
-                binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
-                binding.bottomSheetLayout.title.text =
-                    pictureOfTheDayAppState.responseDataItemDay.title
-                binding.bottomSheetLayout.explanation.text =
-                    pictureOfTheDayAppState.responseDataItemDay.explanation
+                if (pictureOfTheDayAppState.responseDataItemDay.mediaType == CONSTANT_VIDEO){
+                    binding.imageView.apply {
+                        load(R.drawable.video)
+                        setOnClickListener {
+                            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                                data = Uri.parse(pictureOfTheDayAppState.responseDataItemDay.url)
+                            })                }
+                    }
+
+                }else {
+                    binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
+                    binding.bottomSheetLayout.title.text =
+                        pictureOfTheDayAppState.responseDataItemDay.title
+                    binding.bottomSheetLayout.explanation.text =
+                        pictureOfTheDayAppState.responseDataItemDay.explanation
+                }
+
             }
         }
     }

@@ -6,14 +6,14 @@ import ru.dw.material.R
 import ru.dw.material.utils.CONSTANT_THEMES_BLU
 import ru.dw.material.utils.CONSTANT_THEMES_GREEN
 import ru.dw.material.utils.CONSTANT_THEMES_RED
-import ru.dw.material.utils.SharedPreferencesManager
+import ru.dw.material.utils.SharedPreferencesManagerNasa
 import ru.dw.material.view.picture.PictureOfTheDayFragment
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val pref = SharedPreferencesManager(this)
+        val pref = SharedPreferencesManagerNasa(this)
         when (pref.getThemes()) {
             CONSTANT_THEMES_RED -> {setTheme(R.style.RedThemeMaterial)}
             CONSTANT_THEMES_BLU -> {setTheme(R.style.BlueThemeMaterial)}
