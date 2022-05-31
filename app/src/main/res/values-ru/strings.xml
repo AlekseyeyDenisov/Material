@@ -19,4 +19,5 @@
     <string name="theme_change">Сменить тему</string>
     <string name="ok">Да</string>
     <string name="no">Нет</string>
+    <string name="theme_switching">Переключение тем</string>
 </resources>
