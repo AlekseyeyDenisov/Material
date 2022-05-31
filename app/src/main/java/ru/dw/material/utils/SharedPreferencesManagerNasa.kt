@@ -10,7 +10,6 @@ const val CONSTANT_THEMES_BLU = 1
 const val CONSTANT_THEMES_GREEN = 2
 private const val S_P_THEMES_NIGHT_DAY = "night_day"
 const val CONSTANT_THEMES_DAY = true
-const val CONSTANT_THEMES_NIGHT = false
 
 
 class SharedPreferencesManagerNasa(context: Context) {
