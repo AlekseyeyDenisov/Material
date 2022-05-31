@@ -17,11 +17,11 @@ import com.google.android.material.tabs.TabLayout
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
-import ru.dw.material.utils.EquilateralImageView
 import ru.dw.material.utils.SharedPreferencesManagerNasa
 import ru.dw.material.view.MainActivity
 import ru.dw.material.view.picture.bottonnonigation.BurgerBottomNavigationDrawerFragment
 import ru.dw.material.view.picture.bottonnonigation.SettingsBottomNavigationDrawerFragment
+import ru.dw.material.view.picture.novigation.viewpager.ViewPagerAdapter
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -159,6 +159,8 @@ class PictureOfTheDayFragment : Fragment() {
 
                 visibilityLoading(false)
                 if (pictureOfTheDayAppState.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
+                    binding.imageView.visibility = View.VISIBLE
+                    binding.vewPage.visibility = View.GONE
                     binding.imageView.apply {
                         load(R.drawable.video)
                         setOnClickListener {
@@ -169,12 +171,19 @@ class PictureOfTheDayFragment : Fragment() {
                     }
 
                 } else {
-                    binding.imageView.setOnClickListener(null)
-                    binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
-                    binding.bottomSheetLayout.title.text =
-                        pictureOfTheDayAppState.responseDataItemDay.title
-                    binding.bottomSheetLayout.explanation.text =
-                        pictureOfTheDayAppState.responseDataItemDay.explanation
+//                    binding.imageView.setOnClickListener(null)
+//                    binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
+//                    binding.bottomSheetLayout.title.text =
+//                        pictureOfTheDayAppState.responseDataItemDay.title
+//                    binding.bottomSheetLayout.explanation.text =
+//                        pictureOfTheDayAppState.responseDataItemDay.explanation
+                    binding.imageView.visibility = View.GONE
+                    binding.vewPage.visibility = View.VISIBLE
+                    binding.vewPage.adapter =
+                        ViewPagerAdapter(
+                            requireActivity().supportFragmentManager,
+                            pictureOfTheDayAppState.responseDataItemDay
+                        )
                 }
 
             }
@@ -199,7 +208,7 @@ class PictureOfTheDayFragment : Fragment() {
                 if (currentTheme) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     pref.setThemesNightDay(!currentTheme)
-                }else {
+                } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     pref.setThemesNightDay(!currentTheme)
                 }
