@@ -17,6 +17,7 @@ import com.google.android.material.tabs.TabLayout
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
+import ru.dw.material.utils.EquilateralImageView
 import ru.dw.material.utils.SharedPreferencesManagerNasa
 import ru.dw.material.view.MainActivity
 import ru.dw.material.view.picture.bottonnonigation.BurgerBottomNavigationDrawerFragment
@@ -155,6 +156,7 @@ class PictureOfTheDayFragment : Fragment() {
 
             }
             is PictureOfTheDayAppState.Success -> {
+
                 visibilityLoading(false)
                 if (pictureOfTheDayAppState.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
                     binding.imageView.apply {
@@ -167,6 +169,7 @@ class PictureOfTheDayFragment : Fragment() {
                     }
 
                 } else {
+                    binding.imageView.setOnClickListener(null)
                     binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
                     binding.bottomSheetLayout.title.text =
                         pictureOfTheDayAppState.responseDataItemDay.title
