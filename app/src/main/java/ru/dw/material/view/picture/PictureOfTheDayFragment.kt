@@ -6,28 +6,38 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.chip.Chip
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
+import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
+import ru.dw.material.utils.SharedPreferencesManagerNasa
 import ru.dw.material.view.MainActivity
-import ru.dw.material.view.PictureOfTheDayAppState
+import ru.dw.material.view.picture.bottonnonigation.BurgerBottomNavigationDrawerFragment
+import ru.dw.material.view.picture.bottonnonigation.SettingsBottomNavigationDrawerFragment
+import ru.dw.material.view.picture.novigation.viewpager.ViewPagerAdapter
 
 
 class PictureOfTheDayFragment : Fragment() {
-    var isMain = true
-
+    private var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
     private val viewModel: PictureOfTheDayFragmentViewModel by lazy {
         ViewModelProvider(this)[PictureOfTheDayFragmentViewModel::class.java]
     }
+    private lateinit var pref: SharedPreferencesManagerNasa
+    private val TODAY_PICTURE = 0
+    private val YESTERDAY_PICTURE = 1
+    private val DAY_BEFOR_YESTERDAY_PICTURE = 2
+    private val URL_WIKIPEDIA = "https://en.wikipedia.org/wiki/"
 
 
     override fun onCreateView(
@@ -40,9 +50,10 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        pref = SharedPreferencesManagerNasa(requireContext())
         menuActionBar()
         initViewModel()
-        chipGroup()
+        tabSelected()
         fabListener()
         searchWikipedia()
 
@@ -52,13 +63,14 @@ class PictureOfTheDayFragment : Fragment() {
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data =
-                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                    Uri.parse("$URL_WIKIPEDIA${binding.inputEditText.text.toString()}")
             })
         }
     }
 
     private fun fabListener() {
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
+        val bottomSheetBehavior =
+            BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
         binding.fab.setOnClickListener {
             if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
@@ -97,22 +109,33 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private fun chipGroup() {
-        binding.chipGroup.setOnCheckedChangeListener { group, position ->
-            group.findViewById<Chip>(position)?.let {
-                Log.d("@@@", "chipGroup: ${it.text} $position")//Выводит страную позицию "2131231225"
+    private fun tabSelected() {
+        binding.tableLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.d("@@@", "onTabSelected: ${tab?.position}")
+                when (tab?.position) {
+                    0 -> {
+                        viewModel.sendRequest(TODAY_PICTURE)
+                    }
+                    1 -> {
+                        viewModel.sendRequest(YESTERDAY_PICTURE)
+                    }
+                    2 -> {
+                        viewModel.sendRequest(DAY_BEFOR_YESTERDAY_PICTURE)
+                    }
+                }
             }
-        }
 
-        binding.today.setOnClickListener {
-            viewModel.sendRequest(0)
-        }
-        binding.yesterday.setOnClickListener {
-            viewModel.sendRequest(1)
-        }
-        binding.tdby.setOnClickListener {
-            viewModel.sendRequest(2)
-        }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
+
     }
 
     private fun initViewModel() {
@@ -134,12 +157,36 @@ class PictureOfTheDayFragment : Fragment() {
 
             }
             is PictureOfTheDayAppState.Success -> {
+
                 visibilityLoading(false)
-                binding.imageView.load(pictureOfTheDayAppState.responseDataItemDay.url)
-                binding.bottomSheetLayout.title.text =
-                    pictureOfTheDayAppState.responseDataItemDay.title
-                binding.bottomSheetLayout.explanation.text =
-                    pictureOfTheDayAppState.responseDataItemDay.explanation
+                if (pictureOfTheDayAppState.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
+                    binding.tabLayoutViewPager.visibility = View.GONE
+                    binding.vewPage.visibility = View.GONE
+                    binding.imageView.visibility = View.VISIBLE
+                    binding.imageView.apply {
+                        load(R.drawable.video)
+                        setOnClickListener {
+                            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                                data = Uri.parse(pictureOfTheDayAppState.responseDataItemDay.url)
+                            })
+                        }
+                    }
+
+                } else {
+                    binding.vewPage.visibility = View.VISIBLE
+                    binding.tabLayoutViewPager.visibility = View.VISIBLE
+                    binding.imageView.visibility = View.GONE
+                    binding.vewPage.adapter = ViewPagerAdapter(this, pictureOfTheDayAppState.responseDataItemDay)
+                    binding.bottomSheetLayout.title.text = pictureOfTheDayAppState.responseDataItemDay.title
+                    binding.bottomSheetLayout.explanation.text = pictureOfTheDayAppState.responseDataItemDay.explanation
+                    TabLayoutMediator(binding.tabLayoutViewPager,binding.vewPage
+                    ) { tab, position ->
+                        tab.text = "${position+1}"
+
+                    }.attach()
+
+                }
+
             }
         }
     }
@@ -156,14 +203,23 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> {
-                Log.d("@@@", "onOptionsItemSelected app_bar_fav: ")
+            R.id.app_bar_theme -> {
+                Log.d("@@@", "onOptionsItemSelected: ")
+                val currentTheme = pref.getThemesNightDay()
+                if (currentTheme) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    pref.setThemesNightDay(!currentTheme)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    pref.setThemesNightDay(!currentTheme)
+                }
             }
             R.id.app_bar_settings -> {
-                Log.d("@@@", "onOptionsItemSelected app_bar_settings: ")
+                SettingsBottomNavigationDrawerFragment.newInstance()
+                    .show(requireActivity().supportFragmentManager, "")
             }
             android.R.id.home -> {
-                BottomNavigationDrawerFragment.newInstance()
+                BurgerBottomNavigationDrawerFragment.newInstance()
                     .show(requireActivity().supportFragmentManager, "")
             }
         }

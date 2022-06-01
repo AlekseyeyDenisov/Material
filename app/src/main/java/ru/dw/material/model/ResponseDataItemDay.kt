@@ -1,7 +1,10 @@
 package ru.dw.material.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ResponseDataItemDay(
 
 	@field:SerializedName("date")
@@ -14,7 +17,7 @@ data class ResponseDataItemDay(
 	val mediaType: String,
 
 	@field:SerializedName("hdurl")
-	val hdurl: String,
+	val hdUrl: String,
 
 	@field:SerializedName("service_version")
 	val serviceVersion: String,
@@ -27,4 +30,4 @@ data class ResponseDataItemDay(
 
 	@field:SerializedName("url")
 	val url: String
-)
+): Parcelable
