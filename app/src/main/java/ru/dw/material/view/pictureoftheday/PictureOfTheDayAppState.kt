@@ -1,4 +1,4 @@
-package ru.dw.material.view.picture
+package ru.dw.material.view.pictureoftheday
 
 import ru.dw.material.model.ResponseDataItemDay
 

@@ -2,17 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/navigation_theme_red"
-        android:title="@string/themes_red"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_navigation_theme_red"
+        android:title="@string/themes_red" />
 
     <item
-        android:id="@+id/navigation_theme_blue"
+        android:id="@+id/action_navigation_theme_blue"
         android:title="@string/themes_blue"
-        app:showAsAction="ifRoom" />
+        />
     <item
-        android:id="@+id/navigation_theme_green"
-        android:title="@string/themes_green"
+        android:id="@+id/action_navigation_theme_green"
+        android:title="@string/themes_green" />
+    <item
+        android:id="@+id/action_bar_theme"
+        android:icon="@drawable/ic_dark_theme_24"
+        android:title="@string/theme_switching"
         app:showAsAction="ifRoom" />
+
+
 
 </menu>

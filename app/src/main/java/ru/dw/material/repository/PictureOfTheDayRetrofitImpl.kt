@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.dw.material.BuildConfig
 import ru.dw.material.model.ResponseDataItemDay
-import ru.dw.material.view.picture.PictureOfTheDayFragmentViewModel
+import ru.dw.material.view.pictureoftheday.PictureOfTheDayFragmentViewModel
 
 
 object PictureOfTheDayRetrofitImpl {

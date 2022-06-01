@@ -1,4 +1,4 @@
-package ru.dw.material.view.picture.dialog
+package ru.dw.material.view.main.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog

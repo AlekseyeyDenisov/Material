@@ -1,4 +1,4 @@
-package ru.dw.material.view.picture.novigation
+package ru.dw.material.view.pictureoftheday.novigation
 
 import android.os.Bundle
 import android.view.LayoutInflater

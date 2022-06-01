@@ -1,4 +1,4 @@
-package ru.dw.material.view.picture
+package ru.dw.material.view.pictureoftheday
 
 import android.content.Intent
 import android.net.Uri
@@ -6,23 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
-import ru.dw.material.utils.SharedPreferencesManagerNasa
-import ru.dw.material.view.MainActivity
-import ru.dw.material.view.picture.bottonnonigation.BurgerBottomNavigationDrawerFragment
-import ru.dw.material.view.picture.bottonnonigation.SettingsBottomNavigationDrawerFragment
-import ru.dw.material.view.picture.novigation.viewpager.ViewPagerAdapter
+import ru.dw.material.view.pictureoftheday.novigation.viewpager.ViewPagerAdapter
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -33,7 +25,6 @@ class PictureOfTheDayFragment : Fragment() {
     private val viewModel: PictureOfTheDayFragmentViewModel by lazy {
         ViewModelProvider(this)[PictureOfTheDayFragmentViewModel::class.java]
     }
-    private lateinit var pref: SharedPreferencesManagerNasa
     private val TODAY_PICTURE = 0
     private val YESTERDAY_PICTURE = 1
     private val DAY_BEFOR_YESTERDAY_PICTURE = 2
@@ -50,64 +41,16 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pref = SharedPreferencesManagerNasa(requireContext())
-        menuActionBar()
+
+        setHasOptionsMenu(true)
         initViewModel()
         tabSelected()
-        fabListener()
-        searchWikipedia()
+
 
     }
 
-    private fun searchWikipedia() {
-        binding.inputLayout.setEndIconOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data =
-                    Uri.parse("$URL_WIKIPEDIA${binding.inputEditText.text.toString()}")
-            })
-        }
-    }
 
-    private fun fabListener() {
-        val bottomSheetBehavior =
-            BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
-        binding.fab.setOnClickListener {
-            if (isMain) {
-                binding.bottomAppBar.navigationIcon = null
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_back_fab
-                    )
-                )
-                binding.bottomAppBar.replaceMenu(R.menu.menu_null)
 
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-            } else {
-                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_hamburger_menu_bottom_bar
-                ))
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_plus_fab
-                    )
-                )
-                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-            }
-            isMain = !isMain
-        }
-
-    }
-
-    private fun menuActionBar() {
-        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
-        setHasOptionsMenu(true)
-    }
 
     private fun tabSelected() {
         binding.tableLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -196,35 +139,7 @@ class PictureOfTheDayFragment : Fragment() {
         else binding.loadingPicture.visibility = View.GONE
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_bottom_bar, menu)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.app_bar_theme -> {
-                Log.d("@@@", "onOptionsItemSelected: ")
-                val currentTheme = pref.getThemesNightDay()
-                if (currentTheme) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    pref.setThemesNightDay(!currentTheme)
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    pref.setThemesNightDay(!currentTheme)
-                }
-            }
-            R.id.app_bar_settings -> {
-                SettingsBottomNavigationDrawerFragment.newInstance()
-                    .show(requireActivity().supportFragmentManager, "")
-            }
-            android.R.id.home -> {
-                BurgerBottomNavigationDrawerFragment.newInstance()
-                    .show(requireActivity().supportFragmentManager, "")
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     companion object {
         @JvmStatic
