@@ -1,7 +1,6 @@
 package ru.dw.material.view.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +10,8 @@ import ru.dw.material.databinding.ActivityMainBinding
 import ru.dw.material.utils.CONSTANT_THEMES_BLU
 import ru.dw.material.utils.CONSTANT_THEMES_GREEN
 import ru.dw.material.utils.CONSTANT_THEMES_RED
-import ru.dw.material.utils.ConstantNasa.TAG
 import ru.dw.material.utils.SharedPreferencesManagerNasa
+import ru.dw.material.view.epic.EpicFragment
 import ru.dw.material.view.main.dialog.DialogChangeThemes
 import ru.dw.material.view.pictureoftheday.PictureOfTheDayFragment
 
@@ -40,6 +39,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.page_2 -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, EpicFragment.newInstance()).commit()
                     true
                 }
                 R.id.page_3 -> {

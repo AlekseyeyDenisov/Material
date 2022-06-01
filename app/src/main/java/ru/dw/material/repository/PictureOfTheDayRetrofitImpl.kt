@@ -1,5 +1,6 @@
 package ru.dw.material.repository
 
+import android.util.Log
 import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -8,6 +9,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.dw.material.BuildConfig
 import ru.dw.material.model.ResponseDataItemDay
+import ru.dw.material.model.ResponseEpic
+import ru.dw.material.utils.ConstantNasa.TAG
 import ru.dw.material.view.pictureoftheday.PictureOfTheDayFragmentViewModel
 
 
@@ -27,7 +30,7 @@ object PictureOfTheDayRetrofitImpl {
         callbackDetails: PictureOfTheDayFragmentViewModel.CallbackDetails
     ) {
         retrofit
-            .create(PictureOfTheDayAPI::class.java)
+            .create(NasaAPI::class.java)
             .getPictureOfTheDay(BuildConfig.NASA_API_KEY, whatDay, whatDay)
             .enqueue(
                 object : Callback<List<ResponseDataItemDay>> {
@@ -35,7 +38,7 @@ object PictureOfTheDayRetrofitImpl {
                         call: Call<List<ResponseDataItemDay>>,
                         responseList: Response<List<ResponseDataItemDay>>
                     ) {
-                        responseList.body()
+
                         if (responseList.isSuccessful) {
                             responseList.body()?.let {
                                 callbackDetails.onResponseSuccess(it[0])
@@ -57,6 +60,40 @@ object PictureOfTheDayRetrofitImpl {
 
                 })
 
+    }
+
+    fun getEpic(){
+        retrofit
+            .create(NasaAPI::class.java)
+            .getEpic(BuildConfig.NASA_API_KEY)
+            .enqueue(
+                object : Callback<List<ResponseEpic>> {
+                    override fun onResponse(
+                        call: Call<List<ResponseEpic>>,
+                        responseList: Response<List<ResponseEpic>>
+                    ) {
+                        Log.d(TAG, "onResponse: ${ call.request()}")
+                        if (responseList.isSuccessful) {
+                            Log.d(TAG, "onResponse: ${responseList.body()}")
+                            responseList.body()
+                               // callbackDetails.onResponseSuccess(it[0])
+                            
+                        } else {
+                           // callbackDetails.onFail("Error code: ${responseList.code()}")
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: Call<List<ResponseEpic>>,
+                        t: Throwable
+                    ) {
+                        t.message?.let {error->
+                           // callbackDetails.onFail(error)
+                        }
+
+                    }
+
+                })
     }
 
 
