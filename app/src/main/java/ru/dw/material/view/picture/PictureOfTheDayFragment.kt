@@ -14,6 +14,7 @@ import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
@@ -159,9 +160,9 @@ class PictureOfTheDayFragment : Fragment() {
 
                 visibilityLoading(false)
                 if (pictureOfTheDayAppState.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
-                    binding.imageView.visibility = View.VISIBLE
                     binding.tabLayoutViewPager.visibility = View.GONE
                     binding.vewPage.visibility = View.GONE
+                    binding.imageView.visibility = View.VISIBLE
                     binding.imageView.apply {
                         load(R.drawable.video)
                         setOnClickListener {
@@ -172,20 +173,18 @@ class PictureOfTheDayFragment : Fragment() {
                     }
 
                 } else {
-
-                    binding.imageView.visibility = View.GONE
                     binding.vewPage.visibility = View.VISIBLE
                     binding.tabLayoutViewPager.visibility = View.VISIBLE
-                    binding.vewPage.adapter =
-                        ViewPagerAdapter(
-                            requireActivity().supportFragmentManager,
-                            pictureOfTheDayAppState.responseDataItemDay
-                        )
-                    binding.bottomSheetLayout.title.text =
-                        pictureOfTheDayAppState.responseDataItemDay.title
-                    binding.bottomSheetLayout.explanation.text =
-                        pictureOfTheDayAppState.responseDataItemDay.explanation
-                    binding.tabLayoutViewPager.setupWithViewPager(binding.vewPage)
+                    binding.imageView.visibility = View.GONE
+                    binding.vewPage.adapter = ViewPagerAdapter(this, pictureOfTheDayAppState.responseDataItemDay)
+                    binding.bottomSheetLayout.title.text = pictureOfTheDayAppState.responseDataItemDay.title
+                    binding.bottomSheetLayout.explanation.text = pictureOfTheDayAppState.responseDataItemDay.explanation
+                    TabLayoutMediator(binding.tabLayoutViewPager,binding.vewPage
+                    ) { tab, position ->
+                        tab.text = "${position+1}"
+
+                    }.attach()
+
                 }
 
             }

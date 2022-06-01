@@ -10,8 +10,9 @@ import ru.dw.material.R
 import ru.dw.material.databinding.FragmentLowPictureBinding
 import ru.dw.material.model.ResponseDataItemDay
 
-const val KEY_BUNDLE_PICTURE_LOW = "KEY_BUNDLE_PICTURE_LOW"
-class LowPictureFragment: Fragment() {
+
+
+class LowPictureFragment : Fragment() {
     private var _binding: FragmentLowPictureBinding? = null
     private val binding: FragmentLowPictureBinding get() = _binding!!
     private lateinit var day: ResponseDataItemDay
@@ -19,7 +20,8 @@ class LowPictureFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            day = it.getParcelable<ResponseDataItemDay>(KEY_BUNDLE_PICTURE_LOW) as ResponseDataItemDay
+            day =
+                it.getParcelable<ResponseDataItemDay>(KEY_BUNDLE_PICTURE_LOW) as ResponseDataItemDay
         }
 
     }
@@ -46,10 +48,18 @@ class LowPictureFragment: Fragment() {
     }
 
     companion object {
+        private const val KEY_BUNDLE_PICTURE_LOW = "KEY_BUNDLE_PICTURE_LOW"
         @JvmStatic
         fun newInstance(bundle: Bundle) =
             LowPictureFragment().apply {
                 arguments = bundle
             }
+
+
+        fun bundle(responseDataItemDay: ResponseDataItemDay):Bundle{
+            val bundle = Bundle()
+            bundle.putParcelable(KEY_BUNDLE_PICTURE_LOW,responseDataItemDay)
+            return bundle
+        }
     }
 }
