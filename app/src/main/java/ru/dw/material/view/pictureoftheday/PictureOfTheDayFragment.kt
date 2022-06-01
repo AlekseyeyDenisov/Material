@@ -4,11 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import ru.dw.material.R
@@ -18,7 +21,6 @@ import ru.dw.material.view.pictureoftheday.novigation.viewpager.ViewPagerAdapter
 
 
 class PictureOfTheDayFragment : Fragment() {
-    private var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
@@ -28,7 +30,6 @@ class PictureOfTheDayFragment : Fragment() {
     private val TODAY_PICTURE = 0
     private val YESTERDAY_PICTURE = 1
     private val DAY_BEFOR_YESTERDAY_PICTURE = 2
-    private val URL_WIKIPEDIA = "https://en.wikipedia.org/wiki/"
 
 
     override fun onCreateView(
@@ -45,17 +46,21 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
         initViewModel()
         tabSelected()
+        bottomSheet()
 
 
     }
 
-
+    private fun bottomSheet() {
+        val bottomSheetBehavior =
+            BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
+        bottomSheetBehavior.setPeekHeight(300, true)
+    }
 
 
     private fun tabSelected() {
         binding.tableLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                Log.d("@@@", "onTabSelected: ${tab?.position}")
                 when (tab?.position) {
                     0 -> {
                         viewModel.sendRequest(TODAY_PICTURE)
@@ -79,11 +84,6 @@ class PictureOfTheDayFragment : Fragment() {
 
         })
 
-    }
-
-    private fun initViewModel() {
-        viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
-        viewModel.sendRequest(0)
     }
 
     private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
@@ -119,12 +119,20 @@ class PictureOfTheDayFragment : Fragment() {
                     binding.vewPage.visibility = View.VISIBLE
                     binding.tabLayoutViewPager.visibility = View.VISIBLE
                     binding.imageView.visibility = View.GONE
-                    binding.vewPage.adapter = ViewPagerAdapter(this, pictureOfTheDayAppState.responseDataItemDay)
-                    binding.bottomSheetLayout.title.text = pictureOfTheDayAppState.responseDataItemDay.title
-                    binding.bottomSheetLayout.explanation.text = pictureOfTheDayAppState.responseDataItemDay.explanation
-                    TabLayoutMediator(binding.tabLayoutViewPager,binding.vewPage
+                    binding.vewPage.adapter =
+                        ViewPagerAdapter(this, pictureOfTheDayAppState.responseDataItemDay)
+                    binding.bottomSheetLayout.title.text =
+                        pictureOfTheDayAppState.responseDataItemDay.title
+                    binding.bottomSheetLayout.explanation.text =
+                        pictureOfTheDayAppState.responseDataItemDay.explanation
+                    TabLayoutMediator(
+                        binding.tabLayoutViewPager, binding.vewPage
                     ) { tab, position ->
-                        tab.text = "${position+1}"
+                        when (position) {
+                            0 -> {tab.text = getString(R.string.high_photo)}
+                            1 -> {tab.text = getString(R.string.low_photo)}
+                        }
+
 
                     }.attach()
 
@@ -139,15 +147,19 @@ class PictureOfTheDayFragment : Fragment() {
         else binding.loadingPicture.visibility = View.GONE
     }
 
-
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = PictureOfTheDayFragment()
+    private fun initViewModel() {
+        viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
+        viewModel.sendRequest(0)
     }
+
 
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = PictureOfTheDayFragment()
     }
 }

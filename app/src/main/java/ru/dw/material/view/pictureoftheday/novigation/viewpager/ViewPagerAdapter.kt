@@ -17,4 +17,5 @@ class ViewPagerAdapter(fa: Fragment,responseDataItemDay: ResponseDataItemDay) : 
 
     override fun createFragment(position: Int): Fragment = fragment[position]
 
+
 }
