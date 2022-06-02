@@ -129,7 +129,7 @@ object PictureOfTheDayRetrofitImpl {
                     ) {
                         t.message?.let { error ->
                             Log.d(TAG, "onFailure: $error")
-                            //callbackResponseEpic.onFail(error)
+                            callbackResponseMars.onFail(error)
                         }
 
                     }
