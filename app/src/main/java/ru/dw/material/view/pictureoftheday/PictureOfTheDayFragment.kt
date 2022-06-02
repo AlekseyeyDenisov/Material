@@ -18,6 +18,8 @@ import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
 import ru.dw.material.view.pictureoftheday.novigation.viewpager.ViewPagerAdapter
+import ru.dw.material.view.viewmodel.AppStateFragmentDay
+import ru.dw.material.view.viewmodel.PictureOfTheDayFragmentViewModel
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -86,23 +88,23 @@ class PictureOfTheDayFragment : Fragment() {
 
     }
 
-    private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
-        when (pictureOfTheDayAppState) {
-            is PictureOfTheDayAppState.Loading -> {
+    private fun renderData(appStateFragmentDay: AppStateFragmentDay) {
+        when (appStateFragmentDay) {
+            is AppStateFragmentDay.Loading -> {
                 visibilityLoading(true)
 
             }
-            is PictureOfTheDayAppState.Error -> {
+            is AppStateFragmentDay.Error -> {
                 visibilityLoading(false)
-                Log.d("@@@", "renderData Error: ${pictureOfTheDayAppState.error}")
-                Toast.makeText(requireContext(), pictureOfTheDayAppState.error, Toast.LENGTH_SHORT)
+                Log.d("@@@", "renderData Error: ${appStateFragmentDay.error}")
+                Toast.makeText(requireContext(), appStateFragmentDay.error, Toast.LENGTH_SHORT)
                     .show()
 
             }
-            is PictureOfTheDayAppState.Success -> {
+            is AppStateFragmentDay.Success -> {
 
                 visibilityLoading(false)
-                if (pictureOfTheDayAppState.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
+                if (appStateFragmentDay.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
                     binding.tabLayoutViewPager.visibility = View.GONE
                     binding.vewPage.visibility = View.GONE
                     binding.imageView.visibility = View.VISIBLE
@@ -110,7 +112,7 @@ class PictureOfTheDayFragment : Fragment() {
                         load(R.drawable.video)
                         setOnClickListener {
                             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                                data = Uri.parse(pictureOfTheDayAppState.responseDataItemDay.url)
+                                data = Uri.parse(appStateFragmentDay.responseDataItemDay.url)
                             })
                         }
                     }
@@ -120,11 +122,11 @@ class PictureOfTheDayFragment : Fragment() {
                     binding.tabLayoutViewPager.visibility = View.VISIBLE
                     binding.imageView.visibility = View.GONE
                     binding.vewPage.adapter =
-                        ViewPagerAdapter(this, pictureOfTheDayAppState.responseDataItemDay)
+                        ViewPagerAdapter(this, appStateFragmentDay.responseDataItemDay)
                     binding.bottomSheetLayout.title.text =
-                        pictureOfTheDayAppState.responseDataItemDay.title
+                        appStateFragmentDay.responseDataItemDay.title
                     binding.bottomSheetLayout.explanation.text =
-                        pictureOfTheDayAppState.responseDataItemDay.explanation
+                        appStateFragmentDay.responseDataItemDay.explanation
                     TabLayoutMediator(
                         binding.tabLayoutViewPager, binding.vewPage
                     ) { tab, position ->

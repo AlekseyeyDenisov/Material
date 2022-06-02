@@ -11,7 +11,7 @@ import ru.dw.material.utils.CONSTANT_THEMES_BLU
 import ru.dw.material.utils.CONSTANT_THEMES_GREEN
 import ru.dw.material.utils.CONSTANT_THEMES_RED
 import ru.dw.material.utils.SharedPreferencesManagerNasa
-import ru.dw.material.view.epic.EpicFragment
+import ru.dw.material.view.earth.EarthFragment
 import ru.dw.material.view.main.dialog.DialogChangeThemes
 import ru.dw.material.view.pictureoftheday.PictureOfTheDayFragment
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.page_2 -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.container, EpicFragment.newInstance()).commit()
+                        .replace(R.id.container, EarthFragment.newInstance()).commit()
                     true
                 }
                 R.id.page_3 -> {

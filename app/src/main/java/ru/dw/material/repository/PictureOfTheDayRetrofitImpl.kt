@@ -8,15 +8,17 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.dw.material.BuildConfig
+import ru.dw.material.MyApp
 import ru.dw.material.model.ResponseDataItemDay
-import ru.dw.material.model.ResponseEpic
+import ru.dw.material.model.ResponseEarth
 import ru.dw.material.utils.ConstantNasa.TAG
-import ru.dw.material.view.pictureoftheday.PictureOfTheDayFragmentViewModel
+import ru.dw.material.view.viewmodel.CallbackResponseEpic
+import ru.dw.material.view.viewmodel.CallbackResponseOfTheDay
 
 
 object PictureOfTheDayRetrofitImpl {
     private val retrofit: Retrofit = initRetrofit()
-    private const val NASA_BASE_URL = "https://api.nasa.gov/"
+    const val NASA_BASE_URL = "https://api.nasa.gov/"
 
     private fun initRetrofit(): Retrofit {
         return Retrofit.Builder().apply {
@@ -27,7 +29,7 @@ object PictureOfTheDayRetrofitImpl {
 
     fun getListDayPicture(
         whatDay: String,
-        callbackDetails: PictureOfTheDayFragmentViewModel.CallbackDetails
+        callbackResponseOfTheDay: CallbackResponseOfTheDay
     ) {
         retrofit
             .create(NasaAPI::class.java)
@@ -41,10 +43,10 @@ object PictureOfTheDayRetrofitImpl {
 
                         if (responseList.isSuccessful) {
                             responseList.body()?.let {
-                                callbackDetails.onResponseSuccess(it[0])
+                                callbackResponseOfTheDay.onResponseSuccess(it[0])
                             }
                         } else {
-                            callbackDetails.onFail("Error code: ${responseList.code()}")
+                            callbackResponseOfTheDay.onFail("Error code: ${responseList.code()}")
                         }
                     }
 
@@ -52,8 +54,8 @@ object PictureOfTheDayRetrofitImpl {
                         call: Call<List<ResponseDataItemDay>>,
                         t: Throwable
                     ) {
-                        t.message?.let {error->
-                            callbackDetails.onFail(error)
+                        t.message?.let { error ->
+                            callbackResponseOfTheDay.onFail(error)
                         }
 
                     }
@@ -62,33 +64,33 @@ object PictureOfTheDayRetrofitImpl {
 
     }
 
-    fun getEpic(){
+    fun getEarth(callbackResponseEpic: CallbackResponseEpic) {
+        Log.d(TAG, "getEpic: ${MyApp.pref.getTDateDayAPi()}")
         retrofit
             .create(NasaAPI::class.java)
-            .getEpic(BuildConfig.NASA_API_KEY)
+            .getEarth(MyApp.pref.getTDateDayAPi(),BuildConfig.NASA_API_KEY)
             .enqueue(
-                object : Callback<List<ResponseEpic>> {
+                object : Callback<List<ResponseEarth>> {
                     override fun onResponse(
-                        call: Call<List<ResponseEpic>>,
-                        responseList: Response<List<ResponseEpic>>
+                        call: Call<List<ResponseEarth>>,
+                        responseList: Response<List<ResponseEarth>>
                     ) {
-                        Log.d(TAG, "onResponse: ${ call.request()}")
                         if (responseList.isSuccessful) {
-                            Log.d(TAG, "onResponse: ${responseList.body()}")
-                            responseList.body()
-                               // callbackDetails.onResponseSuccess(it[0])
-                            
+                            responseList.body()?.let {
+                                callbackResponseEpic.onResponseSuccess(it)
+                            }
                         } else {
-                           // callbackDetails.onFail("Error code: ${responseList.code()}")
+                            callbackResponseEpic.onFail("Error code: ${responseList.code()}")
                         }
                     }
 
                     override fun onFailure(
-                        call: Call<List<ResponseEpic>>,
+                        call: Call<List<ResponseEarth>>,
                         t: Throwable
                     ) {
-                        t.message?.let {error->
-                           // callbackDetails.onFail(error)
+                        t.message?.let { error ->
+                            Log.d(TAG, "onFailure: $error")
+                            callbackResponseEpic.onFail(error)
                         }
 
                     }

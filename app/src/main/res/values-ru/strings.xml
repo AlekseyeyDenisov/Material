@@ -22,4 +22,7 @@
     <string name="theme_switching">Переключение тем</string>
     <string name="high_photo">Фото</string>
     <string name="low_photo">Фото HD</string>
+    <string name="no_photos_his_day">В этот день нет фото</string>
+    <string name="earth">Земля</string>
+    <string name="floating_action_button">Кнопка выбора даты</string>
 </resources>

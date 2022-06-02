@@ -22,8 +22,9 @@
     <string name="theme_switching">Theme switching</string>
     <string name="high_photo">High photo</string>
     <string name="low_photo">Low photo</string>
-
-
+    <string name="no_photos_his_day">There are no photos this day</string>
+    <string name="earth">Earth</string>
+    <string name="floating_action_button">Date selection button</string>
 
 
 </resources>

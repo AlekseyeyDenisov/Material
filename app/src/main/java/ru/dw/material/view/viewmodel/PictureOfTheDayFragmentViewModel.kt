@@ -1,4 +1,4 @@
-package ru.dw.material.view.pictureoftheday
+package ru.dw.material.view.viewmodel
 
 
 import android.annotation.SuppressLint
@@ -11,24 +11,23 @@ import java.util.*
 
 
 class PictureOfTheDayFragmentViewModel(
-    private val liveData: MutableLiveData<PictureOfTheDayAppState> = MutableLiveData(),
+    private val liveData: MutableLiveData<AppStateFragmentDay> = MutableLiveData(),
     private val api: PictureOfTheDayRetrofitImpl = PictureOfTheDayRetrofitImpl
 ) : ViewModel() {
 
-    fun getLiveData(): MutableLiveData<PictureOfTheDayAppState> {
-        return liveData
-    }
+    fun getLiveData(): MutableLiveData<AppStateFragmentDay> = liveData
+
 
     fun sendRequest(daysAgo: Int) {
-        liveData.postValue(PictureOfTheDayAppState.Loading)
+        liveData.postValue(AppStateFragmentDay.Loading)
 
-        api.getListDayPicture(getDaysAgo(daysAgo), object : CallbackDetails {
+        api.getListDayPicture(getDaysAgo(daysAgo), object : CallbackResponseOfTheDay {
             override fun onResponseSuccess(success: ResponseDataItemDay) {
-                liveData.postValue(PictureOfTheDayAppState.Success(success))
+                liveData.postValue(AppStateFragmentDay.Success(success))
             }
 
             override fun onFail(error: String) {
-                liveData.postValue(PictureOfTheDayAppState.Error(error))
+                liveData.postValue(AppStateFragmentDay.Error(error))
             }
         })
     }
@@ -41,9 +40,6 @@ class PictureOfTheDayFragmentViewModel(
         return sdf.format(calendar.time)
     }
 
-    interface CallbackDetails {
-        fun onResponseSuccess(success: ResponseDataItemDay)
-        fun onFail(error: String)
-    }
+
 
 }

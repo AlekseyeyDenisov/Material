@@ -2,9 +2,10 @@ package ru.dw.material.repository
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import ru.dw.material.model.ResponseDataItemDay
-import ru.dw.material.model.ResponseEpic
+import ru.dw.material.model.ResponseEarth
 
 
 interface NasaAPI {
@@ -15,9 +16,11 @@ interface NasaAPI {
         @Query("end_date") endData: String
     ): Call<List<ResponseDataItemDay>>
 
-    @GET("EPIC/api/natural/date/2022-05-01")
-    fun getEpic(
+
+    @GET("EPIC/api/natural/date/{date}")
+    fun getEarth(
+        @Path("date") date: String?,
         @Query("api_key") apiKey: String
-    ): Call<List<ResponseEpic>>
+    ): Call<List<ResponseEarth>>
 
 }
