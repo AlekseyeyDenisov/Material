@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="MyStaleBottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="elevation">20dp</item>
+        <item name="enforceTextAppearance">false</item>
+        <item name="enforceMaterialTheme">false</item>
+        <item name="itemBackground">@android:color/holo_orange_light</item>
+        <item name="itemHorizontalTranslationEnabled">true</item>
+        <item name="itemIconSize">20dp</item>
+        <item name="labelVisibilityMode">auto</item>
+        <item name="itemPaddingTop">10dp</item>
+        <item name="itemPaddingBottom">15dp</item>
+        <item name="android:minHeight">@dimen/navigation_height</item>
+    </style>
 
     <style name="MyTextView" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
         <item name="android:fontFamily">@font/aladin</item>

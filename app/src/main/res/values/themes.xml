@@ -25,7 +25,11 @@
         <item name="chipStyle">@style/MyChipStyle</item>
         <item name="android:textViewStyle">@style/MyTextView</item>
 
+        <item name="bottomNavigationStyle">@style/MyStaleBottomNavigationView</item>
+
     </style>
+
+
 
     <style name="RedThemeMaterial" parent="BaseThemeMaterial">
         <item name="baseThemeColor">@color/red</item>
