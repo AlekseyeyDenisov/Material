@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="MyTextView" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
         <item name="android:fontFamily">@font/aladin</item>
         <item name="android:textSize">17sp</item>

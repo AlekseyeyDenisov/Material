@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_of_the_day"
+        android:enabled="true"
+        android:icon="@drawable/ic_calendar_today"
+        android:title="@string/photo_of_the_day_stub"/>
+    <item
+        android:id="@+id/page_earth"
+        android:enabled="true"
+        android:icon="@drawable/ic_earth"
+        android:title="@string/earth"/>
+    <item
+        android:id="@+id/page_mars"
+        android:enabled="true"
+        android:icon="@drawable/ic_mars"
+        android:title="@string/mars"/>
+</menu>

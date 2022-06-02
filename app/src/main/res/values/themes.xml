@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="BaseThemeMaterial" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="BaseThemeMaterial" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="android:navigationBarColor">?baseThemeColor</item>
         <item name="colorPrimary">?baseThemeColor</item>
@@ -25,7 +25,11 @@
         <item name="chipStyle">@style/MyChipStyle</item>
         <item name="android:textViewStyle">@style/MyTextView</item>
 
+        <item name="bottomNavigationStyle">@style/MyStaleBottomNavigationView</item>
+
     </style>
+
+
 
     <style name="RedThemeMaterial" parent="BaseThemeMaterial">
         <item name="baseThemeColor">@color/red</item>
