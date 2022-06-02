@@ -4,8 +4,9 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.dw.material.model.ResponseDataItemDay
-import ru.dw.material.model.ResponseEarth
+import ru.dw.material.dto.ResponseDataItemDay
+import ru.dw.material.dto.ResponseEarth
+import ru.dw.material.dto.ResponseMars
 
 
 interface NasaAPI {
@@ -22,5 +23,11 @@ interface NasaAPI {
         @Path("date") date: String?,
         @Query("api_key") apiKey: String
     ): Call<List<ResponseEarth>>
+
+    @GET("mars-photos/api/v1/rovers/curiosity/photos")
+    fun getMarsImageByDate(
+        @Query("earth_date") earth_date: String?,
+        @Query("api_key") apiKey: String,
+    ): Call<ResponseMars>
 
 }

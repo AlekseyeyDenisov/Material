@@ -7,7 +7,7 @@ import ru.dw.material.BuildConfig
 import ru.dw.material.MyApp
 import ru.dw.material.R
 import ru.dw.material.databinding.ItemPhotoBinding
-import ru.dw.material.model.ResponseEarth
+import ru.dw.material.dto.ResponseEarth
 import ru.dw.material.repository.PictureOfTheDayRetrofitImpl.NASA_BASE_URL
 
 class HolderAdapterPhotoItem(view: View) : RecyclerView.ViewHolder(view) {

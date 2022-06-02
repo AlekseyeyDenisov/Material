@@ -1,10 +1,10 @@
-package ru.dw.material.view.viewmodel
+package ru.dw.material.view.pictureoftheday.viewmodel
 
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.dw.material.model.ResponseDataItemDay
+import ru.dw.material.dto.ResponseDataItemDay
 import ru.dw.material.repository.PictureOfTheDayRetrofitImpl
 import java.text.SimpleDateFormat
 import java.util.*

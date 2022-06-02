@@ -1,7 +1,7 @@
 package ru.dw.material.view.earth.recycler
 
 import androidx.recyclerview.widget.DiffUtil
-import ru.dw.material.model.ResponseEarth
+import ru.dw.material.dto.ResponseEarth
 
 class PhotoItemDiffUtilCallBack: DiffUtil.ItemCallback<ResponseEarth>() {
     override fun areItemsTheSame(

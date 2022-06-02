@@ -2,7 +2,7 @@ package ru.dw.material.view.pictureoftheday.novigation.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ru.dw.material.model.ResponseDataItemDay
+import ru.dw.material.dto.ResponseDataItemDay
 import ru.dw.material.view.pictureoftheday.novigation.HighPictureFragment
 import ru.dw.material.view.pictureoftheday.novigation.LowPictureFragment
 

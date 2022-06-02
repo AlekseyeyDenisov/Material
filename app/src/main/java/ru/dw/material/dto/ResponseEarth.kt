@@ -1,4 +1,4 @@
-package ru.dw.material.model
+package ru.dw.material.dto
 
 import com.google.gson.annotations.SerializedName
 

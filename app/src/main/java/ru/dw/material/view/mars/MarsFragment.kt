@@ -1,7 +1,6 @@
-package ru.dw.material.view.earth
+package ru.dw.material.view.mars
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,18 +15,18 @@ import ru.dw.material.utils.convertDateFormatApi
 import ru.dw.material.utils.convertDateFormatUrlImages
 import ru.dw.material.view.earth.components.DayPickersDate
 import ru.dw.material.view.earth.components.OnDatePicker
-import ru.dw.material.view.earth.recycler.AdapterPhotoItemNasa
-import ru.dw.material.view.earth.viewmodel.AppStateFragmentEarth
-import ru.dw.material.view.earth.viewmodel.EarthViewModel
+import ru.dw.material.view.mars.recycler.AdapterPhotoItemMars
+import ru.dw.material.view.mars.viewmodel.AppStateFragmentMars
+import ru.dw.material.view.mars.viewmodel.MarsViewModel
 
 
-class EarthFragment : Fragment() {
+class MarsFragment : Fragment() {
     private var _binding: FragmentListPhotoBinding? = null
     private val binding: FragmentListPhotoBinding get() = _binding!!
-    private val viewModel: EarthViewModel by lazy {
-        ViewModelProvider(this)[EarthViewModel::class.java]
+    private val viewModel: MarsViewModel by lazy {
+        ViewModelProvider(this)[MarsViewModel::class.java]
     }
-    private val adapterPhoto = AdapterPhotoItemNasa()
+    private val adapterPhoto = AdapterPhotoItemMars()
 
 
     override fun onCreateView(
@@ -75,7 +74,7 @@ class EarthFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = EarthFragment()
+        fun newInstance() = MarsFragment()
     }
 
     override fun onDestroy() {
@@ -88,21 +87,23 @@ class EarthFragment : Fragment() {
         binding.recyclerItem.adapter = adapterPhoto
     }
 
-    private fun renderData(appStateFragmentEarth: AppStateFragmentEarth) {
-        when (appStateFragmentEarth) {
-            is AppStateFragmentEarth.Loading -> {
+    private fun renderData(appStateFragmentMars: AppStateFragmentMars) {
+        when (appStateFragmentMars) {
+            is AppStateFragmentMars.Loading -> {
                 visibilityLoading(true)
+
+
             }
-            is AppStateFragmentEarth.Error -> {
+            is AppStateFragmentMars.Error -> {
                 visibilityLoading(false)
-                Toast.makeText(requireContext(), appStateFragmentEarth.error, Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), appStateFragmentMars.error, Toast.LENGTH_SHORT)
                     .show()
 
             }
-            is AppStateFragmentEarth.Success -> {
+            is AppStateFragmentMars.Success -> {
                 visibilityLoading(false)
-                if (appStateFragmentEarth.responseDataListEarth.size > 0) {
-                    val list = appStateFragmentEarth.responseDataListEarth
+                if (appStateFragmentMars.responseDataListEarth.size > 0) {
+                    val list = appStateFragmentMars.responseDataListEarth
                     adapterPhoto.submitList(list)
                     binding.datePhotosEarth.text = MyApp.pref.getTDateDayAPi()
                 } else {

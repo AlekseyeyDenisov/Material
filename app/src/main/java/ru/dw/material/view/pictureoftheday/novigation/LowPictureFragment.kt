@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import coil.load
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentLowPictureBinding
-import ru.dw.material.model.ResponseDataItemDay
+import ru.dw.material.dto.ResponseDataItemDay
 
 
 

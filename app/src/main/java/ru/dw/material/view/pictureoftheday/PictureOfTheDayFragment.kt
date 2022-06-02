@@ -18,8 +18,8 @@ import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
 import ru.dw.material.view.pictureoftheday.novigation.viewpager.ViewPagerAdapter
-import ru.dw.material.view.viewmodel.AppStateFragmentDay
-import ru.dw.material.view.viewmodel.PictureOfTheDayFragmentViewModel
+import ru.dw.material.view.pictureoftheday.viewmodel.AppStateFragmentDay
+import ru.dw.material.view.pictureoftheday.viewmodel.PictureOfTheDayFragmentViewModel
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -50,7 +50,6 @@ class PictureOfTheDayFragment : Fragment() {
         tabSelected()
         bottomSheet()
 
-
     }
 
     private fun bottomSheet() {
@@ -58,7 +57,6 @@ class PictureOfTheDayFragment : Fragment() {
             BottomSheetBehavior.from(binding.bottomSheetLayout.bottomSheetContainer)
         bottomSheetBehavior.setPeekHeight(300, true)
     }
-
 
     private fun tabSelected() {
         binding.tableLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

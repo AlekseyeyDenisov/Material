@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import ru.dw.material.databinding.ItemPhotoBinding
-import ru.dw.material.model.ResponseEarth
+import ru.dw.material.dto.ResponseEarth
 
 
 

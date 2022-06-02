@@ -13,6 +13,7 @@ import ru.dw.material.utils.CONSTANT_THEMES_RED
 import ru.dw.material.utils.SharedPreferencesManagerNasa
 import ru.dw.material.view.earth.EarthFragment
 import ru.dw.material.view.main.dialog.DialogChangeThemes
+import ru.dw.material.view.mars.MarsFragment
 import ru.dw.material.view.pictureoftheday.PictureOfTheDayFragment
 
 
@@ -38,12 +39,14 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
                     true
                 }
-                R.id.page_2 -> {
+                R.id.page_earth -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, EarthFragment.newInstance()).commit()
                     true
                 }
-                R.id.page_3 -> {
+                R.id.page_mars -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, MarsFragment.newInstance()).commit()
                     true
                 }
                 else -> {
