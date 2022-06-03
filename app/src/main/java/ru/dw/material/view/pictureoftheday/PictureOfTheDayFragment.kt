@@ -101,6 +101,11 @@ class PictureOfTheDayFragment : Fragment() {
             is AppStateFragmentDay.Loading -> {
                 visibilityLoading(true)
 
+
+
+                    binding.loadingPicture
+
+
             }
             is AppStateFragmentDay.Error -> {
                 visibilityLoading(false)
