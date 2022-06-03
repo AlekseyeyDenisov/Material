@@ -18,6 +18,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 import ru.dw.material.R
 import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.utils.ConstantNasa.CONSTANT_VIDEO
+import ru.dw.material.utils.ConstantNasa.TAG
 import ru.dw.material.utils.getDaysAgo
 import ru.dw.material.view.pictureoftheday.novigation.viewpager.ViewPagerAdapter
 import ru.dw.material.view.pictureoftheday.viewmodel.AppStateFragmentDay
@@ -100,12 +101,7 @@ class PictureOfTheDayFragment : Fragment() {
         when (appStateFragmentDay) {
             is AppStateFragmentDay.Loading -> {
                 visibilityLoading(true)
-
-
-
                     binding.loadingPicture
-
-
             }
             is AppStateFragmentDay.Error -> {
                 visibilityLoading(false)
@@ -118,15 +114,10 @@ class PictureOfTheDayFragment : Fragment() {
 
                 visibilityLoading(false)
                 if (appStateFragmentDay.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
-                    binding.tabLayoutViewPager.visibility = View.GONE
-                    binding.vewPage.visibility = View.GONE
-                    binding.youtubePlayerView.visibility = View.VISIBLE
-                    //https://www.youtube.com/embed/cNT5yAqpBmI?rel=0
+                    isVisibleVideo(true)
                     showNasaVideo(parseUrl(appStateFragmentDay.responseDataItemDay.url))
                 } else {
-                    binding.vewPage.visibility = View.VISIBLE
-                    binding.tabLayoutViewPager.visibility = View.VISIBLE
-                    binding.youtubePlayerView.visibility = View.GONE
+                    isVisibleVideo(false)
                     binding.vewPage.adapter =
                         ViewPagerAdapter(this, appStateFragmentDay.responseDataItemDay)
                     binding.bottomSheetLayout.title.text =
@@ -148,6 +139,19 @@ class PictureOfTheDayFragment : Fragment() {
 
             }
         }
+    }
+
+    private fun isVisibleVideo(visible:Boolean) {
+        if (visible){
+            binding.tabLayoutViewPager.visibility = View.GONE
+            binding.vewPage.visibility = View.GONE
+            binding.youtubePlayerView.visibility = View.VISIBLE
+        }else{
+            binding.vewPage.visibility = View.VISIBLE
+            binding.tabLayoutViewPager.visibility = View.VISIBLE
+            binding.youtubePlayerView.visibility = View.GONE
+        }
+
     }
 
     private fun parseUrl(idVideo: String): String =  idVideo.removeSurrounding(
