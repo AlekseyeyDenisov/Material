@@ -39,22 +39,19 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="?actionBarSize"
-                    android:text="@string/tdby" />
+                    android:text="@string/video" />
 
             </com.google.android.material.tabs.TabLayout>
 
 
-
-            <ru.dw.material.utils.EquilateralImageView
-                android:id="@+id/imageView"
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/photo_of_the_day_stub"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/table_layout_day"
-                tools:srcCompat="@drawable/video"/>
+                app:layout_constraintTop_toBottomOf="@+id/table_layout_day"/>
+
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vew_page"

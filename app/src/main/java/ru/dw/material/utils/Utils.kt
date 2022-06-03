@@ -2,6 +2,7 @@ package ru.dw.material.utils
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
+import java.util.*
 
 const val CONSTANT_FORMAT_DATE = "YYYY-MM-dd"
 
@@ -17,5 +18,13 @@ fun convertDateFormatUrlImages(miles: Long): String {
     val formatterMonth = SimpleDateFormat("MM").format(miles)
     val formatterYear = SimpleDateFormat("yyyy").format(miles)
     return "$formatterYear/$formatterMonth/$formatterDay"
+}
+
+@SuppressLint("SimpleDateFormat", "WeekBasedYear")
+fun getDaysAgo(daysAgo: Int): String {
+    val sdf = SimpleDateFormat("YYYY-MM-dd")
+    val calendar = Calendar.getInstance()
+    calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
+    return sdf.format(calendar.time)
 }
 

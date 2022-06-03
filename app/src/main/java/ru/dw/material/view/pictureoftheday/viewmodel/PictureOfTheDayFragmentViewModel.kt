@@ -18,10 +18,10 @@ class PictureOfTheDayFragmentViewModel(
     fun getLiveData(): MutableLiveData<AppStateFragmentDay> = liveData
 
 
-    fun sendRequest(daysAgo: Int) {
+    fun sendRequest(day: String) {
         liveData.postValue(AppStateFragmentDay.Loading)
 
-        api.getListDayPicture(getDaysAgo(daysAgo), object : CallbackResponseOfTheDay {
+        api.getListDayPicture(day, object : CallbackResponseOfTheDay {
             override fun onResponseSuccess(success: ResponseDataItemDay) {
                 liveData.postValue(AppStateFragmentDay.Success(success))
             }
@@ -32,13 +32,7 @@ class PictureOfTheDayFragmentViewModel(
         })
     }
 
-    @SuppressLint("SimpleDateFormat", "WeekBasedYear")
-    private fun getDaysAgo(daysAgo: Int): String {
-        val sdf = SimpleDateFormat("YYYY-MM-dd")
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
-        return sdf.format(calendar.time)
-    }
+
 
 
 
