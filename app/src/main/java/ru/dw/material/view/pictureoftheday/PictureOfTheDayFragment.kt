@@ -115,9 +115,10 @@ class PictureOfTheDayFragment : Fragment() {
                 visibilityLoading(false)
                 if (appStateFragmentDay.responseDataItemDay.mediaType == CONSTANT_VIDEO) {
                     isVisibleVideo(true)
-                    showNasaVideo(parseUrl(appStateFragmentDay.responseDataItemDay.url))
+                    showNasaVideo(parseUrl(appStateFragmentDay.responseDataItemDay.url),true)
                 } else {
                     isVisibleVideo(false)
+                    showNasaVideo(parseUrl(appStateFragmentDay.responseDataItemDay.url),false)
                     binding.vewPage.adapter =
                         ViewPagerAdapter(this, appStateFragmentDay.responseDataItemDay)
                     binding.bottomSheetLayout.title.text =
@@ -159,10 +160,11 @@ class PictureOfTheDayFragment : Fragment() {
     )
 
 
-    private fun showNasaVideo(videoId:String){
+    private fun showNasaVideo(videoId:String,isPlay:Boolean){
         youTubePlayerView.getYouTubePlayerWhenReady(object :YouTubePlayerCallback{
             override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(videoId,0F)
+                if (isPlay)youTubePlayer.loadVideo(videoId,0F)
+                else youTubePlayer.pause()
             }
         })
     }

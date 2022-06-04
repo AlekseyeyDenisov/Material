@@ -26,6 +26,11 @@
     <string name="earth">Earth</string>
     <string name="floating_action_button">Date selection button</string>
     <string name="mars">Mars</string>
+    <string name="layout" translatable="false">Layout</string>
+    <string name="home">Home</string>
+    <string name="constrain"  translatable="false">Constrain</string>
+    <string name="coordinator"  translatable="false">Coordinator</string>
+    <string name="motion"  translatable="false">Motion</string>
 
 
 </resources>

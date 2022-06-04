@@ -1,7 +1,6 @@
 package ru.dw.material.view.earth
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +18,7 @@ import ru.dw.material.view.earth.components.OnDatePicker
 import ru.dw.material.view.earth.recycler.AdapterPhotoItemNasa
 import ru.dw.material.view.earth.viewmodel.AppStateFragmentEarth
 import ru.dw.material.view.earth.viewmodel.EarthViewModel
+import ru.dw.material.view.main.MainActivity
 
 
 class EarthFragment : Fragment() {

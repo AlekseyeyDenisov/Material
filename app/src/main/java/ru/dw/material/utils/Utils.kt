@@ -5,6 +5,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 const val CONSTANT_FORMAT_DATE = "YYYY-MM-dd"
+const val TAG_FRAGMENT_LAYOUT = "fragment-layout"
+const val TAG_FRAGMENT_DAY = "fragment-day"
+const val TAG_FRAGMENT_EARTH = "fragment-earth"
+const val TAG_FRAGMENT_MARS = "fragment-mars"
 
 @SuppressLint("SimpleDateFormat", "WeekBasedYear")
 fun convertDateFormatApi(miles: Long): String {
