@@ -7,15 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import coil.load
 import ru.dw.material.R
-import ru.dw.material.databinding.FragmentHighPictureBinding
+import ru.dw.material.databinding.FragmentPictureBinding
+import ru.dw.material.databinding.FragmentPictureOfTheDayBinding
 import ru.dw.material.dto.ResponseDataItemDay
 
 
 
 class HighPictureFragment : Fragment() {
 
-    private var _binding: FragmentHighPictureBinding? = null
-    private val binding: FragmentHighPictureBinding get() = _binding!!
+    private var _binding: FragmentPictureBinding? = null
+    private val binding: FragmentPictureBinding get() = _binding!!
     private lateinit var day: ResponseDataItemDay
 
 
@@ -32,13 +33,13 @@ class HighPictureFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHighPictureBinding.inflate(inflater, container, false)
+        _binding = FragmentPictureBinding.inflate(inflater, container, false)
         initLoadPicture()
         return binding.root
     }
 
     private fun initLoadPicture() {
-        binding.highPicture.load(day.hdUrl) {
+        binding.picture.load(day.hdUrl) {
             placeholder(R.drawable.loadig)
         }
     }

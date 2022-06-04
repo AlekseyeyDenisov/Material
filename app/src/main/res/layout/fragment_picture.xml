@@ -8,7 +8,7 @@
     tools:context=".view.pictureoftheday.novigation.LowPictureFragment">
 
     <ru.dw.material.utils.EquilateralImageView
-        android:id="@+id/low_picture"
+        android:id="@+id/picture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
