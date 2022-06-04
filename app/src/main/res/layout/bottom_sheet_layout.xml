@@ -9,6 +9,12 @@
     app:behavior_hideable="true"
     app:behavior_peekHeight="?actionBarSize"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide1"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <View
         android:id="@+id/bottom_sheet_line"
@@ -34,9 +40,8 @@
         android:id="@+id/explanation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/guide1"
         tools:text="This lovely starfield spans some four full moons." />
 </androidx.constraintlayout.widget.ConstraintLayout>
