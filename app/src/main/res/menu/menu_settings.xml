@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_home"
+        android:title="@string/nasa_api">
+    </item>
+    <item
+        android:id="@+id/action_layout"
+        android:title="@string/layout">
+    </item>
+<group android:id="@+id/theme_group">
     <item
         android:id="@+id/action_navigation_theme_red"
         android:title="@string/themes_red" />
-
     <item
         android:id="@+id/action_navigation_theme_blue"
         android:title="@string/themes_blue"
@@ -12,6 +21,8 @@
     <item
         android:id="@+id/action_navigation_theme_green"
         android:title="@string/themes_green" />
+
+</group>
     <item
         android:id="@+id/action_bar_theme"
         android:icon="@drawable/ic_dark_theme_24"

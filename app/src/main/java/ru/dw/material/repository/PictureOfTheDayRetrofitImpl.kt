@@ -13,9 +13,9 @@ import ru.dw.material.dto.ResponseDataItemDay
 import ru.dw.material.dto.ResponseEarth
 import ru.dw.material.dto.ResponseMars
 import ru.dw.material.utils.ConstantNasa.TAG
-import ru.dw.material.view.earth.viewmodel.CallbackResponseEarth
-import ru.dw.material.view.mars.viewmodel.CallbackResponseMars
-import ru.dw.material.view.pictureoftheday.viewmodel.CallbackResponseOfTheDay
+import ru.dw.material.view.nasa.earth.viewmodel.CallbackResponseEarth
+import ru.dw.material.view.nasa.mars.viewmodel.CallbackResponseMars
+import ru.dw.material.view.nasa.pictureoftheday.viewmodel.CallbackResponseOfTheDay
 
 
 object PictureOfTheDayRetrofitImpl {

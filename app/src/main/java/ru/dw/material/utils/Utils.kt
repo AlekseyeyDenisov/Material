@@ -2,8 +2,16 @@ package ru.dw.material.utils
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
+import java.util.*
 
 const val CONSTANT_FORMAT_DATE = "YYYY-MM-dd"
+const val TAG_FRAGMENT_LAYOUT = "fragment-layout"
+const val TAG_FRAGMENT_DAY = "fragment-day"
+const val TAG_FRAGMENT_EARTH = "fragment-earth"
+const val TAG_FRAGMENT_MARS = "fragment-mars"
+const val TAG_FRAGMENT_CONSTRAINT = "fragment-constraint"
+const val TAG_FRAGMENT_COORDINATOR = "fragment-coordinator"
+const val TAG_FRAGMENT_MOTION = "fragment-motion"
 
 @SuppressLint("SimpleDateFormat", "WeekBasedYear")
 fun convertDateFormatApi(miles: Long): String {
@@ -18,4 +26,14 @@ fun convertDateFormatUrlImages(miles: Long): String {
     val formatterYear = SimpleDateFormat("yyyy").format(miles)
     return "$formatterYear/$formatterMonth/$formatterDay"
 }
+
+@SuppressLint("SimpleDateFormat", "WeekBasedYear")
+fun getDaysAgo(daysAgo: Int): String {
+    val sdf = SimpleDateFormat("YYYY-MM-dd")
+    val calendar = Calendar.getInstance()
+    calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
+    return sdf.format(calendar.time)
+}
+
+
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@layout/fragment_motion_start"
+        app:constraintSetEnd="@layout/fragment_motion_end"
+        app:duration="500"
+        app:pathMotionArc="flip">
+        <OnClick app:targetId="@+id/btn_motion" />
+    </Transition>
+
+
+
+
+
+</MotionScene>

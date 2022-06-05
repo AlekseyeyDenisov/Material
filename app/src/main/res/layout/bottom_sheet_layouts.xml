@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6fa"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="?actionBarSize"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide1"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/bottom_sheet_line"
+        android:layout_width="25dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#663b4351"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="bottom_sheet_line"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TextViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/barrierTop"
+        tools:text="Two Clusters and a Comet" />
+
+    <TextView
+        android:id="@+id/explanation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guide1"
+        tools:text="This lovely starfield spans some four full moons." />
+</androidx.constraintlayout.widget.ConstraintLayout>

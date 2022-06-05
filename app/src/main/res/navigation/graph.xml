@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/graf"
+    app:startDestination="@id/layoutFragment">
+
+    <fragment
+        android:id="@+id/nasaApiFragment"
+        android:name="ru.dw.material.view.layout.constraint.NasaApiFragment"
+        android:label="NasaApiFragment" >
+        <action
+            android:id="@+id/action_nasaApiFragment_to_layoutFragment"
+            app:destination="@id/layoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/layoutFragment"
+        android:name="ru.dw.material.view.layout.LayoutFragment"
+        android:label="LayoutFragment" />
+    <action android:id="@+id/action_global_nasaApiFragment" app:destination="@id/nasaApiFragment" />
+</navigation>
