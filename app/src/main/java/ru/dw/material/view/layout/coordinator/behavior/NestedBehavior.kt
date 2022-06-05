@@ -2,12 +2,10 @@ package ru.dw.material.view.layout.coordinator.behavior
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
-import ru.dw.material.utils.ConstantNasa.TAG
 import kotlin.math.abs
 
 class NestedBehavior(
@@ -24,8 +22,8 @@ class NestedBehavior(
         return (dependency is AppBarLayout || dependency is Button)
     }
 
-    var barHeight = 0
-    var startButtonY = 0F
+    private var barHeight = 0
+    private var startButtonY = 0F
     override fun onDependentViewChanged(
         parent: CoordinatorLayout,
         child: View,
@@ -33,11 +31,9 @@ class NestedBehavior(
     ): Boolean {
 
         if (dependency is AppBarLayout) {
-            val bar = dependency
 
-            child.y = bar.height.toFloat() + bar.y
-
-            barHeight = bar.height
+            child.y = dependency.height.toFloat() + dependency.y
+            barHeight = dependency.height
 
 
         }

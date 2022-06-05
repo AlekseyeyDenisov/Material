@@ -71,19 +71,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_layout -> {
-               // if (supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_LAYOUT) == null) {
                     navController.navigate(R.id.action_nasaApiFragment_to_layoutFragment)
-                   // goToFragment(LayoutFragment.newInstance(),TAG_FRAGMENT_LAYOUT)
-               // }
             }
             R.id.action_home -> {
                 navController.navigate(R.id.action_global_nasaApiFragment)
-               // navController.popBackStack()
-                //if (supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_DAY) == null) {
-                   // goToFragment(PictureOfTheDayFragment.newInstance(),TAG_FRAGMENT_DAY)
-                   // binding.bottomNavigation.selectedItemId = R.id.page_of_the_day
-                //}
-
             }
         }
         return super.onOptionsItemSelected(item)

@@ -11,6 +11,7 @@ const val TAG_FRAGMENT_EARTH = "fragment-earth"
 const val TAG_FRAGMENT_MARS = "fragment-mars"
 const val TAG_FRAGMENT_CONSTRAINT = "fragment-constraint"
 const val TAG_FRAGMENT_COORDINATOR = "fragment-coordinator"
+const val TAG_FRAGMENT_MOTION = "fragment-motion"
 
 @SuppressLint("SimpleDateFormat", "WeekBasedYear")
 fun convertDateFormatApi(miles: Long): String {

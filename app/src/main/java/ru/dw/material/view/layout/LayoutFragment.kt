@@ -9,8 +9,10 @@ import ru.dw.material.R
 import ru.dw.material.databinding.FargmentLayoutBinding
 import ru.dw.material.utils.TAG_FRAGMENT_CONSTRAINT
 import ru.dw.material.utils.TAG_FRAGMENT_COORDINATOR
+import ru.dw.material.utils.TAG_FRAGMENT_MOTION
 import ru.dw.material.view.layout.constraint.ConstraintFragment
 import ru.dw.material.view.layout.coordinator.CoordinatorFragment
+import ru.dw.material.view.layout.motion.MotionFragment
 import ru.dw.material.view.main.MainActivity
 
 
@@ -51,6 +53,12 @@ class LayoutFragment : Fragment() {
                     true
                 }
                 R.id.action_motion -> {
+                    if (requireActivity().supportFragmentManager.findFragmentByTag(
+                            TAG_FRAGMENT_MOTION
+                        ) == null
+                    ) {
+                        goToFragment(MotionFragment.newInstance(), TAG_FRAGMENT_MOTION)
+                    }
 
                     true
                 }
@@ -59,7 +67,7 @@ class LayoutFragment : Fragment() {
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_coordinator
+        binding.bottomNavigation.selectedItemId = R.id.action_constrain
     }
 
     private fun goToFragment(fragment: Fragment, tagFragment: String) {
