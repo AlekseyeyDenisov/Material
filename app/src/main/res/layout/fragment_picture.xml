@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.pictureoftheday.novigation.LowPictureFragment">
+    tools:context=".view.nasa.pictureoftheday.novigation.LowPictureFragment">
 
     <ru.dw.material.utils.EquilateralImageView
         android:id="@+id/picture"

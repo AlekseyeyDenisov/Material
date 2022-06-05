@@ -9,6 +9,8 @@ const val TAG_FRAGMENT_LAYOUT = "fragment-layout"
 const val TAG_FRAGMENT_DAY = "fragment-day"
 const val TAG_FRAGMENT_EARTH = "fragment-earth"
 const val TAG_FRAGMENT_MARS = "fragment-mars"
+const val TAG_FRAGMENT_CONSTRAINT = "fragment-constraint"
+const val TAG_FRAGMENT_COORDINATOR = "fragment-coordinator"
 
 @SuppressLint("SimpleDateFormat", "WeekBasedYear")
 fun convertDateFormatApi(miles: Long): String {
@@ -31,4 +33,6 @@ fun getDaysAgo(daysAgo: Int): String {
     calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
     return sdf.format(calendar.time)
 }
+
+
 

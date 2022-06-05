@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_home"
-        android:title="@string/home">
+        android:title="@string/nasa_api">
     </item>
     <item
         android:id="@+id/action_layout"
