@@ -36,8 +36,6 @@ class NasaApiFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         goToFragment(PictureOfTheDayFragment.newInstance(), TAG_FRAGMENT_DAY)
         bottomNavigation()
-
-
     }
 
 

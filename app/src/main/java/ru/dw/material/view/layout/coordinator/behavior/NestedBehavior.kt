@@ -4,8 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
+import ru.dw.material.utils.ConstantNasa.TAG
+import kotlin.math.abs
 
 class NestedBehavior(
     context: Context,
@@ -18,17 +21,43 @@ class NestedBehavior(
         child: View,
         dependency: View
     ): Boolean {
-        return (dependency is AppBarLayout)
+        return (dependency is AppBarLayout || dependency is Button)
     }
 
+    var barHeight = 0
+    var startButtonY = 0F
     override fun onDependentViewChanged(
         parent: CoordinatorLayout,
         child: View,
         dependency: View
     ): Boolean {
 
-        val bar = dependency as AppBarLayout
-        child.y = 0 + bar.height.toFloat() + bar.y
+        if (dependency is AppBarLayout) {
+            val bar = dependency
+
+            child.y = bar.height.toFloat() + bar.y
+
+            barHeight = bar.height
+
+
+        }
+        if (dependency is Button) {
+            if (startButtonY == 0F){
+                startButtonY = dependency.y
+            }
+            dependency.x = child.y
+            dependency.y =  startButtonY
+            dependency.alpha = 2 - abs(2 * child.y) / barHeight.toFloat()
+            //Log.d(TAG, "onDependentViewChanged startButtonY: ${( abs(2 * child.y) / barHeight.toFloat())}")
+            //Log.d(TAG, "onDependentViewChanged dependency.y: ${dependency.y}")
+            //Log.d(TAG, "onDependentViewChanged barHeight: ${dependency.y - barHeight}")
+            //Log.d(TAG, "onDependentViewChanged dependency.y: ${dependency.y}")
+
+
+
+
+        }
+
 
         return super.onDependentViewChanged(parent, child, dependency)
     }

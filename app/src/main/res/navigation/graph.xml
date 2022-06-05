@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/graf"
-    app:startDestination="@id/nasaApiFragment">
+    app:startDestination="@id/layoutFragment">
 
     <fragment
         android:id="@+id/nasaApiFragment"
@@ -15,5 +15,6 @@
     <fragment
         android:id="@+id/layoutFragment"
         android:name="ru.dw.material.view.layout.LayoutFragment"
-        android:label="LayoutFragment" /><action android:id="@+id/action_global_nasaApiFragment" app:destination="@id/nasaApiFragment"/>
+        android:label="LayoutFragment" />
+    <action android:id="@+id/action_global_nasaApiFragment" app:destination="@id/nasaApiFragment" />
 </navigation>

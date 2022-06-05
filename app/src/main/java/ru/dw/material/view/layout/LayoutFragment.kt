@@ -59,7 +59,7 @@ class LayoutFragment : Fragment() {
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_constrain
+        binding.bottomNavigation.selectedItemId = R.id.action_coordinator
     }
 
     private fun goToFragment(fragment: Fragment, tagFragment: String) {
