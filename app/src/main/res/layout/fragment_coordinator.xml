@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="false">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior=".view.layout.coordinator.behavior.NestedBehavior"
-        tools:context=".ScrollingActivity">
+        tools:context=".view.main.MainActivity">
 
         <TextView
             android:layout_width="wrap_content"
