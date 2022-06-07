@@ -30,12 +30,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
          navController = navHostFragment.navController
 
-
-        ///bottomNavigation()
-
-//        if (supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_LAYOUT) == null) {
-//            goToFragment(LayoutFragment.newInstance(),TAG_FRAGMENT_LAYOUT)
-//        }
     }
 
 
