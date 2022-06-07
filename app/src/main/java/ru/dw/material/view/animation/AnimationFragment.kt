@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import ru.dw.material.R
 import ru.dw.material.databinding.FargmentAnimationBinding
 import ru.dw.material.utils.TAG_FRAGMENT_CONSTRAINT
+import ru.dw.material.utils.TAG_FRAGMENT_EXPLODE
+import ru.dw.material.utils.TAG_FRAGMENT_TRANSITION
+import ru.dw.material.view.animation.explode.ExplodeFragment
 import ru.dw.material.view.animation.transition.TransitionFragment
 
 
@@ -35,7 +38,11 @@ class AnimationFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_transition -> {
-                    goToFragment(TransitionFragment.newInstance(), TAG_FRAGMENT_CONSTRAINT)
+                    goToFragment(TransitionFragment.newInstance(), TAG_FRAGMENT_TRANSITION)
+                    true
+                }
+                R.id.action_explode -> {
+                    goToFragment(ExplodeFragment.newInstance(), TAG_FRAGMENT_EXPLODE)
                     true
                 }
 
@@ -44,7 +51,7 @@ class AnimationFragment : Fragment() {
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_transition
+        binding.bottomNavigation.selectedItemId = R.id.action_explode
     }
 
     private fun goToFragment(fragment: Fragment, tagFragment: String) {

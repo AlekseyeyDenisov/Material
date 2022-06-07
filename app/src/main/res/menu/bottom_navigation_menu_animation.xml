@@ -5,9 +5,9 @@
         android:enabled="true"
         android:title="@string/transition"/>
     <item
-        android:id="@+id/action_coordinator"
+        android:id="@+id/action_explode"
         android:enabled="true"
-        android:title=""/>
+        android:title="@string/explode"/>
     <item
         android:id="@+id/action_motion"
         android:enabled="true"
