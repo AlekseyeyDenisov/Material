@@ -24,6 +24,7 @@ class NestedBehavior(
 
     private var barHeight = 0
     private var startButtonY = 0F
+    private var oneProcentHighAppBarLayout = 0
     override fun onDependentViewChanged(
         parent: CoordinatorLayout,
         child: View,
@@ -31,6 +32,10 @@ class NestedBehavior(
     ): Boolean {
 
         if (dependency is AppBarLayout) {
+            if (oneProcentHighAppBarLayout == 0){
+                oneProcentHighAppBarLayout = dependency.height / 100
+            }
+
 
             child.y = dependency.height.toFloat() + dependency.y
             barHeight = dependency.height
@@ -40,16 +45,16 @@ class NestedBehavior(
         if (dependency is Button) {
             if (startButtonY == 0F){
                 startButtonY = dependency.y
-            }
-            dependency.x = child.y
-            dependency.y =  startButtonY
+            }else {
+
+            dependency.x =  child.y
             dependency.alpha = 2 - abs(2 * child.y) / barHeight.toFloat()
             //Log.d(TAG, "onDependentViewChanged startButtonY: ${( abs(2 * child.y) / barHeight.toFloat())}")
             //Log.d(TAG, "onDependentViewChanged dependency.y: ${dependency.y}")
             //Log.d(TAG, "onDependentViewChanged barHeight: ${dependency.y - barHeight}")
             //Log.d(TAG, "onDependentViewChanged dependency.y: ${dependency.y}")
 
-
+            }
 
 
         }
