@@ -124,6 +124,7 @@
     <string name="transition" translatable="false">Transition</string>
     <string name="explode">Explode</string>
     <string name="tap_on_me" translatable="false">TAP ON ME</string>
+    <string name="zoom">Zoom</string>
 
 
 </resources>

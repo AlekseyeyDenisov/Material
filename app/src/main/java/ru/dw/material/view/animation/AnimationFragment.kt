@@ -10,6 +10,7 @@ import ru.dw.material.databinding.FargmentAnimationBinding
 import ru.dw.material.utils.TAG_FRAGMENT_CONSTRAINT
 import ru.dw.material.utils.TAG_FRAGMENT_EXPLODE
 import ru.dw.material.utils.TAG_FRAGMENT_TRANSITION
+import ru.dw.material.utils.TAG_FRAGMENT_ZOOM
 import ru.dw.material.view.animation.explode.ExplodeFragment
 import ru.dw.material.view.animation.transition.TransitionFragment
 
@@ -45,13 +46,17 @@ class AnimationFragment : Fragment() {
                     goToFragment(ExplodeFragment.newInstance(), TAG_FRAGMENT_EXPLODE)
                     true
                 }
+                R.id.action_zoom -> {
+                    goToFragment(ZoomImagesFragment.newInstance(), TAG_FRAGMENT_ZOOM)
+                    true
+                }
 
                 else -> {
                     true
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_explode
+        binding.bottomNavigation.selectedItemId = R.id.action_zoom
     }
 
     private fun goToFragment(fragment: Fragment, tagFragment: String) {

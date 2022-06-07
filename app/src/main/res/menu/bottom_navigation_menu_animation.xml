@@ -9,7 +9,7 @@
         android:enabled="true"
         android:title="@string/explode"/>
     <item
-        android:id="@+id/action_motion"
+        android:id="@+id/action_zoom"
         android:enabled="true"
-        android:title=""/>
+        android:title="@string/zoom"/>
 </menu>

@@ -29,5 +29,6 @@
     <string name="plus">+</string>
     <string name="animation">Animation</string>
     <string name="explode">Explode</string>
+    <string name="zoom">Zoom</string>
 
 </resources>
