@@ -2,19 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/graf"
-    app:startDestination="@id/nasaApiFragment">
+    app:startDestination="@id/animationFragment">
 
     <fragment
         android:id="@+id/nasaApiFragment"
         android:name="ru.dw.material.view.layout.constraint.NasaApiFragment"
-        android:label="NasaApiFragment" >
-        <action
-            android:id="@+id/action_nasaApiFragment_to_layoutFragment"
-            app:destination="@id/layoutFragment" />
-    </fragment>
+        android:label="NasaApiFragment" />
     <fragment
         android:id="@+id/layoutFragment"
         android:name="ru.dw.material.view.layout.LayoutFragment"
         android:label="LayoutFragment" />
     <action android:id="@+id/action_global_nasaApiFragment" app:destination="@id/nasaApiFragment" />
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="ru.dw.material.view.animation.AnimationFragment"
+        android:label="AnimationFragment" />
+    <action android:id="@+id/action_global_animationFragment" app:destination="@id/animationFragment" />
+    <action android:id="@+id/action_global_layoutFragment" app:destination="@id/layoutFragment" />
 </navigation>

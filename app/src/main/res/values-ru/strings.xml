@@ -27,5 +27,6 @@
     <string name="floating_action_button">Кнопка выбора даты</string>
     <string name="mars">Марс</string>
     <string name="plus">+</string>
+    <string name="animation">Animation</string>
 
 </resources>

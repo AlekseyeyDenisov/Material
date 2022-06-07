@@ -65,7 +65,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_layout -> {
-                    navController.navigate(R.id.action_nasaApiFragment_to_layoutFragment)
+                    navController.navigate(R.id.action_global_layoutFragment)
+            }
+            R.id.action_animation -> {
+                navController.navigate(R.id.action_global_animationFragment)
             }
             R.id.action_home -> {
                 navController.navigate(R.id.action_global_nasaApiFragment)
