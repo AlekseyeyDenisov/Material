@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.transition.*
 import ru.dw.material.databinding.FragmentTransitionBinding
@@ -29,6 +30,7 @@ class TransitionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.button.setOnClickListener {
+            isOpen = !isOpen
             //TransitionManager.beginDelayedTransition(binding.transitionsContainer)//все делает за меня
             val transitionSlide = Slide(Gravity.END)
             transitionSlide.duration = 2000
@@ -37,18 +39,26 @@ class TransitionFragment : Fragment() {
             val transitionBounds = ChangeBounds()
             transitionBounds.duration = 2000
 
+            val path = ArcMotion()
+
+            transitionBounds.setPathMotion(path)
+
             val transitionSet = TransitionSet()
             transitionSet.addTransition(transitionSlide)
             transitionSet.addTransition(transitionFade)
             transitionSet.addTransition(transitionBounds)
 
             TransitionManager.beginDelayedTransition(binding.transitionsContainer,transitionSet)
-            isOpen = !isOpen
-            binding.text.visibility = if (isOpen) {
-                View.VISIBLE
+            val parmsButtom = (binding.button.layoutParams as FrameLayout.LayoutParams)
+
+             if (isOpen) {
+                 binding.text.visibility =  View.VISIBLE
+                 parmsButtom.gravity = Gravity.BOTTOM or Gravity.END
             } else {
-                View.GONE
+                 binding.text.visibility =   View.GONE
+                 parmsButtom.gravity = Gravity.TOP or Gravity.START
             }
+            binding.button.layoutParams = parmsButtom
 
 
 
