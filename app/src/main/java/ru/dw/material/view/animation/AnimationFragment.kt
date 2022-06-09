@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import ru.dw.material.R
 import ru.dw.material.databinding.FargmentAnimationBinding
 import ru.dw.material.utils.TAG_FRAGMENT_EXPLODE
+import ru.dw.material.utils.TAG_FRAGMENT_OBJECT_ANIM
 import ru.dw.material.utils.TAG_FRAGMENT_TRANSITION
 import ru.dw.material.utils.TAG_FRAGMENT_ZOOM
 import ru.dw.material.view.animation.explode.ExplodeFragment
+import ru.dw.material.view.animation.objectanimation.ObjectAnimationFragment
 import ru.dw.material.view.animation.transition.TransitionFragment
 import ru.dw.material.view.animation.zoom.ZoomImagesFragment
 
@@ -51,12 +53,16 @@ class AnimationFragment : Fragment() {
                     launchFragment(ZoomImagesFragment.newInstance(), TAG_FRAGMENT_ZOOM)
                     true
                 }
+                R.id.action_object -> {
+                    launchFragment(ObjectAnimationFragment.newInstance(), TAG_FRAGMENT_OBJECT_ANIM)
+                    true
+                }
                 else -> {
                     true
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_transition
+        binding.bottomNavigation.selectedItemId = R.id.action_object
     }
 
 

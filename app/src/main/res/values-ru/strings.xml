@@ -30,5 +30,6 @@
     <string name="animation">Animation</string>
     <string name="explode">Explode</string>
     <string name="zoom">Zoom</string>
+    <string name="object_animation">Object animation</string>
 
 </resources>
