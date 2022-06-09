@@ -47,10 +47,13 @@ class ConstrainSetFragment : Fragment() {
 
             if (isOpen){
                 //constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_end)
-               // constrainSet.clear(R.id.title)
                 constrainSet.connect(R.id.title,ConstraintSet.END,R.id.backgroundImage,ConstraintSet.END)
+                constrainSet.clear(R.id.description,ConstraintSet.TOP)
+                constrainSet.connect(R.id.description,ConstraintSet.BOTTOM,R.id.backgroundImage,ConstraintSet.BOTTOM,80)
             }else {
                 constrainSet.connect(R.id.title,ConstraintSet.END,R.id.backgroundImage,ConstraintSet.START)
+                constrainSet.clear(R.id.description,ConstraintSet.BOTTOM)
+                constrainSet.connect(R.id.description,ConstraintSet.TOP,R.id.backgroundImage,ConstraintSet.BOTTOM)
                 //constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_start)
             }
             constrainSet.applyTo(binding.constraintContainer)
