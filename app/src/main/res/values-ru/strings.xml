@@ -31,5 +31,6 @@
     <string name="explode">Explode</string>
     <string name="zoom">Zoom</string>
     <string name="object_animation">Object animation</string>
+    <string name="statelistanimator_example">StateListAnimator Example</string>
 
 </resources>

@@ -126,6 +126,8 @@
     <string name="tap_on_me" translatable="false">TAP ON ME</string>
     <string name="zoom">Zoom</string>
     <string name="object_animation">Object animation</string>
+    <string name="state_list_animator" translatable="false">State List Animator</string>
+    <string name="statelistanimator_example">StateListAnimator Example</string>
 
 
 </resources>

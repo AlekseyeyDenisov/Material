@@ -20,4 +20,9 @@
         android:enabled="true"
         android:icon="@drawable/ic_animation"
         android:title="@string/object_animation"/>
+    <item
+        android:id="@+id/action_state_list"
+        android:enabled="true"
+        android:icon="@drawable/ic_animation"
+        android:title="@string/state_list_animator"/>
 </menu>
