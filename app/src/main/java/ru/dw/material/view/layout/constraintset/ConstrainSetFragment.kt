@@ -37,16 +37,21 @@ class ConstrainSetFragment : Fragment() {
         binding.tap.setOnClickListener {
             isOpen = !isOpen
             val constrainSet = ConstraintSet()
+            constrainSet.clone(binding.constraintContainer)
+
             val transition = ChangeBounds()
             transition.interpolator = AnticipateInterpolator(5F)
-            transition.duration = 2000
+            transition.duration = 1000
             TransitionManager.beginDelayedTransition(binding.constraintContainer,transition)
-            constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_end)
+//            constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_end)
 
             if (isOpen){
-                constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_end)
+                //constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_end)
+               // constrainSet.clear(R.id.title)
+                constrainSet.connect(R.id.title,ConstraintSet.END,R.id.backgroundImage,ConstraintSet.END)
             }else {
-                constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_start)
+                constrainSet.connect(R.id.title,ConstraintSet.END,R.id.backgroundImage,ConstraintSet.START)
+                //constrainSet.clone(requireContext(), R.layout.fragment_animations_bonus_start)
             }
             constrainSet.applyTo(binding.constraintContainer)
         }
