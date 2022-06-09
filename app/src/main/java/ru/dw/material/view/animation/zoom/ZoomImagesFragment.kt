@@ -1,4 +1,4 @@
-package ru.dw.material.view.animation
+package ru.dw.material.view.animation.zoom
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.transition.ChangeBounds
 import androidx.transition.ChangeImageTransform

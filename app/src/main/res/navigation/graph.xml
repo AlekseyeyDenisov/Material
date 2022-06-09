@@ -12,11 +12,11 @@
         android:id="@+id/layoutFragment"
         android:name="ru.dw.material.view.layout.LayoutFragment"
         android:label="LayoutFragment" />
-    <action android:id="@+id/action_global_nasaApiFragment" app:destination="@id/nasaApiFragment" />
     <fragment
         android:id="@+id/animationFragment"
         android:name="ru.dw.material.view.animation.AnimationFragment"
         android:label="AnimationFragment" />
     <action android:id="@+id/action_global_animationFragment" app:destination="@id/animationFragment" />
     <action android:id="@+id/action_global_layoutFragment" app:destination="@id/layoutFragment" />
+    <action android:id="@+id/action_global_nasaApiFragment2" app:destination="@id/nasaApiFragment" />
 </navigation>

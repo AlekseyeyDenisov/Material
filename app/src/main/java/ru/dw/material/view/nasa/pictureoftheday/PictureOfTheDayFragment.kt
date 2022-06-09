@@ -57,8 +57,6 @@ class PictureOfTheDayFragment : Fragment() {
         bottomSheet()
     }
 
-
-
     private fun initYouTube() {
         youTubePlayerView = binding.youtubePlayerView
         lifecycle.addObserver(youTubePlayerView)
@@ -160,7 +158,6 @@ class PictureOfTheDayFragment : Fragment() {
             "https://www.youtube.com/embed/","?rel=0"
     )
 
-
     private fun showNasaVideo(videoId:String,isPlay:Boolean){
         youTubePlayerView.getYouTubePlayerWhenReady(object :YouTubePlayerCallback{
             override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
@@ -169,7 +166,6 @@ class PictureOfTheDayFragment : Fragment() {
             }
         })
     }
-
 
     private fun visibilityLoading(visibility: Boolean) {
         if (visibility) binding.loadingPicture.visibility = View.VISIBLE
@@ -180,7 +176,6 @@ class PictureOfTheDayFragment : Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
         viewModel.sendRequest( getDaysAgo(TODAY_PICTURE))
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

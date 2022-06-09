@@ -17,7 +17,6 @@ class ExplodeFragment : Fragment() {
     private var _binding: FragmentExplodeBinding? = null
     private val binding: FragmentExplodeBinding
         get() = _binding!!
-    private var isOpen: Boolean = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,13 +25,9 @@ class ExplodeFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.recyclerView.adapter = Adapter()
-
-
     }
 
 

@@ -32,11 +32,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-
-
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val dialog = DialogChangeThemes()
         when (item.itemId) {
@@ -71,13 +66,11 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.action_global_animationFragment)
             }
             R.id.action_home -> {
-                navController.navigate(R.id.action_global_nasaApiFragment)
+                navController.navigate(R.id.action_global_nasaApiFragment2)
             }
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
     private fun choiceTheme() {
         when (pref.getThemes()) {

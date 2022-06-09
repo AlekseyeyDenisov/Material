@@ -34,7 +34,7 @@ class NasaApiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        goToFragment(PictureOfTheDayFragment.newInstance(), TAG_FRAGMENT_DAY)
+        launchFragment(PictureOfTheDayFragment.newInstance(), TAG_FRAGMENT_DAY)
         bottomNavigation()
     }
 
@@ -43,21 +43,15 @@ class NasaApiFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.page_of_the_day -> {
-                    if (requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_DAY) == null) {
-                        goToFragment(PictureOfTheDayFragment.newInstance(), TAG_FRAGMENT_DAY)
-                    }
+                    launchFragment(PictureOfTheDayFragment.newInstance(), TAG_FRAGMENT_DAY)
                     true
                 }
                 R.id.page_earth -> {
-                    if (requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_EARTH) == null) {
-                        goToFragment(EarthFragment.newInstance(), TAG_FRAGMENT_EARTH)
-                    }
+                    launchFragment(EarthFragment.newInstance(), TAG_FRAGMENT_EARTH)
                     true
                 }
                 R.id.page_mars -> {
-                    if (requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_MARS) == null) {
-                        goToFragment(MarsFragment.newInstance(), TAG_FRAGMENT_MARS)
-                    }
+                    launchFragment(MarsFragment.newInstance(), TAG_FRAGMENT_MARS)
                     true
                 }
                 else -> {
@@ -68,11 +62,24 @@ class NasaApiFragment : Fragment() {
         binding.bottomNavigation.selectedItemId = R.id.page_of_the_day
     }
 
-    private fun goToFragment(fragment: Fragment, tagFragment: String) {
-        requireActivity().supportFragmentManager.apply {
-            beginTransaction()
-                .replace(R.id.container_nasa_api, fragment, tagFragment)
-                .commit()
+    private fun launchFragment(fragment: Fragment, tagFragment: String) {
+        if (requireActivity().supportFragmentManager.findFragmentByTag(tagFragment) == null
+        ) {
+            requireActivity().supportFragmentManager.apply {
+                beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.to_left_in,
+                        R.anim.to_left_out,
+                        R.anim.to_right_in,
+                        R.anim.to_right_out
+                    )
+                    .addToBackStack(tagFragment)
+                    .add(R.id.container_nasa_api, fragment, tagFragment)
+                    .commit()
+            }
+        } else {
+            requireActivity().supportFragmentManager
+                .popBackStack(tagFragment, 0)
         }
     }
 

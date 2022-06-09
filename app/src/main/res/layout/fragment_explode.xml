@@ -9,7 +9,10 @@
     android:layout_height="match_parent"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     app:spanCount="4"
-    tools:listitem="@layout/recycler_item" />
+    tools:listitem="@layout/recycler_item"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"/>
 
 
 
