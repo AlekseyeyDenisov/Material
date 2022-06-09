@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import ru.dw.material.R
 import ru.dw.material.databinding.FargmentLayoutBinding
 import ru.dw.material.utils.TAG_FRAGMENT_CONSTRAINT
+import ru.dw.material.utils.TAG_FRAGMENT_CONSTRAIN_SET
 import ru.dw.material.utils.TAG_FRAGMENT_COORDINATOR
 import ru.dw.material.utils.TAG_FRAGMENT_MOTION
 import ru.dw.material.view.layout.constraint.ConstraintFragment
+import ru.dw.material.view.layout.constraintset.ConstrainSetFragment
 import ru.dw.material.view.layout.coordinator.CoordinatorFragment
 import ru.dw.material.view.layout.motion.MotionFragment
 
@@ -50,12 +52,16 @@ class LayoutFragment : Fragment() {
                     launchFragment(MotionFragment.newInstance(), TAG_FRAGMENT_MOTION)
                     true
                 }
+                R.id.action_constraintSet -> {
+                    launchFragment(ConstrainSetFragment.newInstance(), TAG_FRAGMENT_CONSTRAIN_SET)
+                    true
+                }
                 else -> {
                     true
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_constrain
+        binding.bottomNavigation.selectedItemId = R.id.action_constraintSet
     }
 
     private fun launchFragment(fragment: Fragment, tagFragment: String) {

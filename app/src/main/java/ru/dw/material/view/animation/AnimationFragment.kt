@@ -64,7 +64,7 @@ class AnimationFragment : Fragment() {
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.action_state_list
+        binding.bottomNavigation.selectedItemId = R.id.action_transition
     }
 
 

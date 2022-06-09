@@ -128,6 +128,12 @@
     <string name="object_animation">Object animation</string>
     <string name="state_list_animator" translatable="false">State List Animator</string>
     <string name="statelistanimator_example">StateListAnimator Example</string>
+    <string name="constraint_set">ConstraintSet</string>
+    <string name="_5_2018">5 июня 2018 г.</string>
+    <string name="krater">Кратер Даниэлсона</string>
+    <string name="visibility_description" translatable="false" >Показать описание</string>
+    <string name="_67_arabia_terra">На фото видно камни и песок в кратере Даниэлсона (диаметр кратера около 67 км), расположенного на юго-востоке области Arabia Terra.</string>
+    <string name="description_photo">Описание фотографии</string>
 
 
 </resources>
