@@ -18,6 +18,8 @@ import ru.dw.material.view.nasa.earth.components.OnDatePicker
 import ru.dw.material.view.nasa.earth.recycler.AdapterPhotoItemNasa
 import ru.dw.material.view.nasa.earth.viewmodel.AppStateFragmentEarth
 import ru.dw.material.view.nasa.earth.viewmodel.EarthViewModel
+import smartdevelop.ir.eram.showcaseviewlib.GuideView
+import smartdevelop.ir.eram.showcaseviewlib.config.DismissType
 
 
 class EarthFragment : Fragment() {
@@ -51,6 +53,16 @@ class EarthFragment : Fragment() {
     }
 
     private fun initFab() {
+        GuideView.Builder(requireContext())
+            .setTitle(getString(R.string.select_day_button))
+            .setContentText(getString(R.string.you_can_choose))
+            .setDismissType(DismissType.anywhere) //optional - default DismissType.targetView
+            .setTargetView(binding.fabNewDateEpic)
+            .setContentTextSize(12) //optional
+            .setTitleTextSize(14) //optional
+            .build()
+            .show()
+
         binding.fabNewDateEpic.setOnClickListener {
             DayPickersDate(requireActivity()).materialDatePicker(object : OnDatePicker {
                 override fun getResultDate(dateMiles: Long) {
