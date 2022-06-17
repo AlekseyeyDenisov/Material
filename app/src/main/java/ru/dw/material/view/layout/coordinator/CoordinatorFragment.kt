@@ -29,7 +29,7 @@ class CoordinatorFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val button = view.findViewById<Button>(R.id.button)
+        val button = binding.button
         (button.layoutParams as CoordinatorLayout.LayoutParams).behavior = NestedBehavior(requireContext())
     }
 
