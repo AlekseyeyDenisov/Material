@@ -1,5 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+
+
     <style name="BaseThemeMaterial" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="android:navigationBarColor">?baseThemeColor</item>
@@ -18,7 +20,7 @@
         <item name="colorOnTertiaryContainer">?baseThemeColor</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:statusBarColor" >?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
         <item name="textInputStyle">@style/MyStyle</item>
         <item name="floatingActionButtonStyle">@style/MyStyleFloatingActionButton</item>
@@ -28,11 +30,13 @@
 
         <item name="bottomNavigationStyle">@style/MyStaleBottomNavigationView</item>
 
-        <item name="android:windowBackground">@drawable/splash_background</item>
+
 
     </style>
 
-
+    <style name="SplashBackground" parent="RedThemeMaterial">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 
     <style name="RedThemeMaterial" parent="BaseThemeMaterial">
         <item name="baseThemeColor">@color/red</item>
