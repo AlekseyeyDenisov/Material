@@ -59,7 +59,7 @@ class NasaApiFragment : Fragment() {
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.page_of_the_day
+        binding.bottomNavigation.selectedItemId = R.id.page_earth
     }
 
     private fun launchFragment(fragment: Fragment, tagFragment: String) {
@@ -68,10 +68,10 @@ class NasaApiFragment : Fragment() {
             requireActivity().supportFragmentManager.apply {
                 beginTransaction()
                     .setCustomAnimations(
-                        R.anim.to_left_in,
-                        R.anim.to_left_out,
-                        R.anim.to_right_in,
-                        R.anim.to_right_out
+                        R.anim.slide_in,
+                        R.anim.fade_out,
+                        R.anim.fade_in,
+                        R.anim.slide_out
                     )
                     .addToBackStack(tagFragment)
                     .add(R.id.container_nasa_api, fragment, tagFragment)
