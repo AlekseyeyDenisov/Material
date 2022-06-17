@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graf"
-    app:startDestination="@id/nasaApiFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/nasaApiFragment"
@@ -19,4 +20,9 @@
     <action android:id="@+id/action_global_animationFragment" app:destination="@id/animationFragment" />
     <action android:id="@+id/action_global_layoutFragment" app:destination="@id/layoutFragment" />
     <action android:id="@+id/action_global_nasaApiFragment2" app:destination="@id/nasaApiFragment" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="ru.dw.material.view.splashscreen.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" />
 </navigation>

@@ -1,0 +1,52 @@
+<resources>
+    <!-- Base application theme. -->
+
+
+    <style name="BaseThemeMaterial" parent="Theme.MaterialComponents.DayNight">
+        <!-- Primary brand color. -->
+        <item name="android:navigationBarColor">?baseThemeColor</item>
+        <item name="colorPrimary">?baseThemeColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">?baseThemeColor</item>
+        <item name="colorOnPrimaryContainer">?baseThemeColor</item>
+        <item name="colorPrimaryInverse">?baseThemeColor</item>
+        <item name="colorSecondary">?baseThemeColor</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">?baseThemeColor</item>
+        <item name="colorOnSecondaryContainer">?baseThemeColor</item>
+        <item name="colorTertiary">?baseThemeColor</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">?baseThemeColor</item>
+        <item name="colorOnTertiaryContainer">?baseThemeColor</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
+        <item name="textInputStyle">@style/MyStyle</item>
+        <item name="floatingActionButtonStyle">@style/MyStyleFloatingActionButton</item>
+        <item name="chipStyle">@style/MyChipStyle</item>
+
+        <item name="android:textViewStyle">@style/MyTextView</item>
+
+        <item name="bottomNavigationStyle">@style/MyStaleBottomNavigationView</item>
+
+
+
+    </style>
+
+    <style name="SplashBackground" parent="RedThemeMaterial">
+
+    </style>
+
+    <style name="RedThemeMaterial" parent="BaseThemeMaterial">
+        <item name="baseThemeColor">@color/red</item>
+    </style>
+    <style name="BlueThemeMaterial" parent="BaseThemeMaterial">
+        <item name="baseThemeColor">@color/blue</item>
+    </style>
+
+    <style name="GreenThemeMaterial" parent="BaseThemeMaterial">
+        <item name="baseThemeColor">@color/green</item>
+    </style>
+
+</resources>
