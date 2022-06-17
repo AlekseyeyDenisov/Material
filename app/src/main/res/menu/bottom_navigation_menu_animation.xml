@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_transition"
+        android:enabled="true"
+        android:icon="@drawable/ic_animation"
+        android:title="@string/transition"/>
+    <item
+        android:id="@+id/action_explode"
+        android:enabled="true"
+        android:icon="@drawable/ic_animation"
+        android:title="@string/explode"/>
+    <item
+        android:id="@+id/action_zoom"
+        android:enabled="true"
+        android:icon="@drawable/ic_animation"
+        android:title="@string/zoom"/>
+    <item
+        android:id="@+id/action_object"
+        android:enabled="true"
+        android:icon="@drawable/ic_animation"
+        android:title="@string/object_animation"/>
+    <item
+        android:id="@+id/action_state_list"
+        android:enabled="true"
+        android:icon="@drawable/ic_animation"
+        android:title="@string/state_list_animator"/>
+</menu>

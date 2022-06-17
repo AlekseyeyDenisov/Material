@@ -27,5 +27,15 @@
     <string name="floating_action_button">Кнопка выбора даты</string>
     <string name="mars">Марс</string>
     <string name="plus">+</string>
+    <string name="animation">Animation</string>
+    <string name="explode">Explode</string>
+    <string name="zoom">Zoom</string>
+    <string name="object_animation">Object animation</string>
+    <string name="statelistanimator_example">StateListAnimator Example</string>
+    <string name="constraint_set">ConstraintSet</string>
+    <string name="_5_2018">5 июня 2018 г.</string>
+    <string name="krater">Кратер Даниэлсона</string>
+    <string name="_67_arabia_terra">На фото видно камни и песок в кратере Даниэлсона (диаметр кратера около 67 км), расположенного на юго-востоке области Arabia Terra.</string>
+    <string name="description_photo">Описание фотографии</string>
 
 </resources>

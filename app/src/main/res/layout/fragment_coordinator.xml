@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false">
+    android:fitsSystemWindows="false"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -37,8 +40,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior=".view.layout.coordinator.behavior.NestedBehavior"
-        tools:context=".view.main.MainActivity">
+        app:layout_behavior=".view.layout.coordinator.behavior.NestedBehavior">
 
         <TextView
             android:layout_width="wrap_content"

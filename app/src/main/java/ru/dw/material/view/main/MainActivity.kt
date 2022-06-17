@@ -30,18 +30,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
          navController = navHostFragment.navController
 
-
-        ///bottomNavigation()
-
-//        if (supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_LAYOUT) == null) {
-//            goToFragment(LayoutFragment.newInstance(),TAG_FRAGMENT_LAYOUT)
-//        }
     }
-
-
-
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val dialog = DialogChangeThemes()
@@ -71,16 +60,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_layout -> {
-                    navController.navigate(R.id.action_nasaApiFragment_to_layoutFragment)
+                    navController.navigate(R.id.action_global_layoutFragment)
+            }
+            R.id.action_animation -> {
+                navController.navigate(R.id.action_global_animationFragment)
             }
             R.id.action_home -> {
-                navController.navigate(R.id.action_global_nasaApiFragment)
+                navController.navigate(R.id.action_global_nasaApiFragment2)
             }
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
     private fun choiceTheme() {
         when (pref.getThemes()) {

@@ -12,6 +12,12 @@ const val TAG_FRAGMENT_MARS = "fragment-mars"
 const val TAG_FRAGMENT_CONSTRAINT = "fragment-constraint"
 const val TAG_FRAGMENT_COORDINATOR = "fragment-coordinator"
 const val TAG_FRAGMENT_MOTION = "fragment-motion"
+const val TAG_FRAGMENT_CONSTRAIN_SET = "fragment-Constrain-set"
+const val TAG_FRAGMENT_TRANSITION = "fragment-transition"
+const val TAG_FRAGMENT_EXPLODE = "fragment-explode"
+const val TAG_FRAGMENT_ZOOM = "fragment-zoom"
+const val TAG_FRAGMENT_OBJECT_ANIM = "fragment-object-animation"
+const val TAG_FRAGMENT_STATE_LIST = "fragment-object-state-list-animator"
 
 @SuppressLint("SimpleDateFormat", "WeekBasedYear")
 fun convertDateFormatApi(miles: Long): String {

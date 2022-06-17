@@ -1,57 +1,62 @@
-package ru.dw.material.view.layout.constraint
-
+package ru.dw.material.view.animation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ru.dw.material.R
-import ru.dw.material.databinding.FragmentNasaApiBinding
-import ru.dw.material.utils.TAG_FRAGMENT_DAY
-import ru.dw.material.utils.TAG_FRAGMENT_EARTH
-import ru.dw.material.utils.TAG_FRAGMENT_MARS
-import ru.dw.material.view.nasa.earth.EarthFragment
-import ru.dw.material.view.nasa.mars.MarsFragment
-import ru.dw.material.view.nasa.pictureoftheday.PictureOfTheDayFragment
+import ru.dw.material.databinding.FargmentAnimationBinding
+import ru.dw.material.utils.*
+import ru.dw.material.view.animation.explode.ExplodeFragment
+import ru.dw.material.view.animation.objectanimation.ObjectAnimationFragment
+import ru.dw.material.view.animation.statelist.StateListAnimatorFragment
+import ru.dw.material.view.animation.transition.TransitionFragment
+import ru.dw.material.view.animation.zoom.ZoomImagesFragment
 
 
-class NasaApiFragment : Fragment() {
+class AnimationFragment : Fragment() {
+    private var _binding: FargmentAnimationBinding? = null
+    private val binding: FargmentAnimationBinding get() = _binding!!
 
-
-    private var _binding: FragmentNasaApiBinding? = null
-    private val binding: FragmentNasaApiBinding
-        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNasaApiBinding.inflate(inflater, container, false)
+        _binding = FargmentAnimationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        launchFragment(PictureOfTheDayFragment.newInstance(), TAG_FRAGMENT_DAY)
         bottomNavigation()
+
     }
 
-
     private fun bottomNavigation() {
+
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.page_of_the_day -> {
-                    launchFragment(PictureOfTheDayFragment.newInstance(), TAG_FRAGMENT_DAY)
+                R.id.action_transition -> {
+                    launchFragment(TransitionFragment.newInstance(), TAG_FRAGMENT_TRANSITION)
                     true
                 }
-                R.id.page_earth -> {
-                    launchFragment(EarthFragment.newInstance(), TAG_FRAGMENT_EARTH)
+                R.id.action_explode -> {
+                    launchFragment(ExplodeFragment.newInstance(), TAG_FRAGMENT_EXPLODE)
                     true
                 }
-                R.id.page_mars -> {
-                    launchFragment(MarsFragment.newInstance(), TAG_FRAGMENT_MARS)
+                R.id.action_zoom -> {
+                    launchFragment(ZoomImagesFragment.newInstance(), TAG_FRAGMENT_ZOOM)
+                    true
+                }
+                R.id.action_object -> {
+                    launchFragment(ObjectAnimationFragment.newInstance(), TAG_FRAGMENT_OBJECT_ANIM)
+                    true
+                }
+                R.id.action_state_list -> {
+                    launchFragment(StateListAnimatorFragment.newInstance(), TAG_FRAGMENT_STATE_LIST)
                     true
                 }
                 else -> {
@@ -59,8 +64,9 @@ class NasaApiFragment : Fragment() {
                 }
             }
         }
-        binding.bottomNavigation.selectedItemId = R.id.page_of_the_day
+        binding.bottomNavigation.selectedItemId = R.id.action_transition
     }
+
 
     private fun launchFragment(fragment: Fragment, tagFragment: String) {
         if (requireActivity().supportFragmentManager.findFragmentByTag(tagFragment) == null
@@ -73,24 +79,29 @@ class NasaApiFragment : Fragment() {
                         R.anim.to_right_in,
                         R.anim.to_right_out
                     )
+                    .add(R.id.containerLayout, fragment, tagFragment)
                     .addToBackStack(tagFragment)
-                    .add(R.id.container_nasa_api, fragment, tagFragment)
                     .commit()
             }
         } else {
             requireActivity().supportFragmentManager
                 .popBackStack(tagFragment, 0)
         }
+
     }
 
 
     companion object {
         @JvmStatic
-        fun newInstance() = NasaApiFragment()
+        fun newInstance() = AnimationFragment()
     }
 
+
     override fun onDestroy() {
-        _binding = null
         super.onDestroy()
+        _binding = null
+
     }
+
+
 }

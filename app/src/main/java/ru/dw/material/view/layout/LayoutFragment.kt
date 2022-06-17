@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import ru.dw.material.R
 import ru.dw.material.databinding.FargmentLayoutBinding
 import ru.dw.material.utils.TAG_FRAGMENT_CONSTRAINT
+import ru.dw.material.utils.TAG_FRAGMENT_CONSTRAIN_SET
 import ru.dw.material.utils.TAG_FRAGMENT_COORDINATOR
 import ru.dw.material.utils.TAG_FRAGMENT_MOTION
 import ru.dw.material.view.layout.constraint.ConstraintFragment
+import ru.dw.material.view.layout.constraintset.ConstrainSetFragment
 import ru.dw.material.view.layout.coordinator.CoordinatorFragment
 import ru.dw.material.view.layout.motion.MotionFragment
-import ru.dw.material.view.main.MainActivity
 
 
 class LayoutFragment : Fragment() {
@@ -40,26 +41,19 @@ class LayoutFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_constrain -> {
-                    goToFragment(ConstraintFragment.newInstance(), TAG_FRAGMENT_CONSTRAINT)
+                    launchFragment(ConstraintFragment.newInstance(), TAG_FRAGMENT_CONSTRAINT)
                     true
                 }
                 R.id.action_coordinator -> {
-                    if (requireActivity().supportFragmentManager.findFragmentByTag(
-                            TAG_FRAGMENT_COORDINATOR
-                        ) == null
-                    ) {
-                        goToFragment(CoordinatorFragment.newInstance(), TAG_FRAGMENT_COORDINATOR)
-                    }
+                    launchFragment(CoordinatorFragment.newInstance(), TAG_FRAGMENT_COORDINATOR)
                     true
                 }
                 R.id.action_motion -> {
-                    if (requireActivity().supportFragmentManager.findFragmentByTag(
-                            TAG_FRAGMENT_MOTION
-                        ) == null
-                    ) {
-                        goToFragment(MotionFragment.newInstance(), TAG_FRAGMENT_MOTION)
-                    }
-
+                    launchFragment(MotionFragment.newInstance(), TAG_FRAGMENT_MOTION)
+                    true
+                }
+                R.id.action_constraintSet -> {
+                    launchFragment(ConstrainSetFragment.newInstance(), TAG_FRAGMENT_CONSTRAIN_SET)
                     true
                 }
                 else -> {
@@ -70,11 +64,24 @@ class LayoutFragment : Fragment() {
         binding.bottomNavigation.selectedItemId = R.id.action_constrain
     }
 
-    private fun goToFragment(fragment: Fragment, tagFragment: String) {
-        requireActivity().supportFragmentManager.apply {
-            beginTransaction()
-                .replace(R.id.containerLayout, fragment, tagFragment)
-                .commit()
+    private fun launchFragment(fragment: Fragment, tagFragment: String) {
+        if (requireActivity().supportFragmentManager.findFragmentByTag(tagFragment) == null
+        ) {
+            requireActivity().supportFragmentManager.apply {
+                beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.to_left_in,
+                        R.anim.to_left_out,
+                        R.anim.to_right_in,
+                        R.anim.to_right_out
+                    )
+                    .add(R.id.containerLayout, fragment, tagFragment)
+                    .addToBackStack(tagFragment)
+                    .commit()
+            }
+        } else {
+            requireActivity().supportFragmentManager
+                .popBackStack(tagFragment, 0)
         }
     }
 

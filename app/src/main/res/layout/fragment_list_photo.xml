@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.nasa.earth.EarthFragment">
+    tools:context=".view.nasa.earth.EarthFragment"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/datePhotosEarth"
         android:layout_marginTop="10sp"

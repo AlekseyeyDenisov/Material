@@ -10,6 +10,10 @@
         android:id="@+id/action_layout"
         android:title="@string/layout">
     </item>
+    <item
+        android:id="@+id/action_animation"
+        android:title="@string/animation">
+    </item>
 <group android:id="@+id/theme_group">
     <item
         android:id="@+id/action_navigation_theme_red"
